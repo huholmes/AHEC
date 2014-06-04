@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_TESTVALUES_viewTrainee" value="name:@traineeID;testValue:1" />
+	<infoitem key="UD_LiveData_params" value="2" />
+	<infoitem key="UD_LiveData_param0" value="Session.SiteID=1&amp;Session.TraineeID=1" />
+	<infoitem key="UD_TESTVALUES_viewSite" value="name:@SiteID;testValue:1" />
+	<infoitem key="UD_LiveData_param1" value="Session.TraineeID=1" />
+</info>

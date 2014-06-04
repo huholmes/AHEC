@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Update" value="name:ID;datatype:,name:HRSAID;datatype:,name:Status;datatype:,name:LastName;datatype:,name:FirstName;datatype:,name:MiddleName;datatype:,name:MaidenName;datatype:,name:EmailPreferred;datatype:,name:EmailUniversity;datatype:,name:EmailPermanent;datatype:,name:Phone;datatype:,name:EmergContactName;datatype:,name:EmergContactPhone;datatype:,name:InstitutionID;datatype:,name:InstitutionLevel;datatype:,name:DisciplineID;datatype:,name:Enrollment;datatype:,name:DOB;datatype:,name:Sex;datatype:,name:Ethnicity;datatype:,name:Race;datatype:,name:RuralBackground;datatype:,name:Disadvantaged;datatype:,name:AZbackground;datatype:,name:MilitaryStatusPre;datatype:,name:SpecialHousing;datatype:,name:Notes;datatype:,name:CreatedBy;datatype:,name:LastEditedBy;datatype:,name:DateCreated;datatype:,name:DateUpdated;datatype:" />
+</info>
