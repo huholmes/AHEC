@@ -48,7 +48,7 @@ Build links with navigation and permissions matrix
             </ul>
         </div>
       
-      <h5 class="sidebartitle">Navigation</h5>
+      <h5 class="sidebartitle"></h5>
       <ul class="nav nav-pills nav-stacked nav-bracket">
     <cfquery name="Navigation" datasource="#datasource2#">
         SELECT * FROM Navigation WHERE accessType = '#Session.AccessLevel#' AND childOf = 'none' ORDER BY navOrder ASC

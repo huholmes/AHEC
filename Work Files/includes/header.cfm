@@ -108,7 +108,7 @@
           <li>
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <img src="../images/photos/loggeduser.png" alt="" />
+                <img src="/images/photos/loggeduser.png" alt="" />
                 <cfoutput>#Session.UserID#</cfoutput>
                 <span class="caret"></span>
               </button>

@@ -237,10 +237,11 @@ NULL
 
   <title>AZAHEC Admin - View Trainee</title>
 
-  <link href="../../css/style.default.css" rel="stylesheet">
-  <link href="../../css/jquery.datatables.css" rel="stylesheet">
-  <link href="../../css/jquery.gritter.css" rel="stylesheet">
-  <link id="fontswitch" rel="stylesheet" href="../../css/font.helvetica-neue.css">
+  <link href="/css/style.default.css" rel="stylesheet">
+  <link href="/css/morris.css" rel="stylesheet">
+  <link href="/css/jquery.datatables.css" rel="stylesheet">
+  <link href="/css/jquery.gritter.css" rel="stylesheet">
+  <link id="fontswitch" rel="stylesheet" href="/css/font.helvetica-neue.css">
   <link rel="stylesheet" type="text/css" href="http://redbar.arizona.edu/sites/default/files/ua-banner/ua-web-branding/css/ua-web-branding.css">	
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -280,13 +281,35 @@ NULL
 
       <div class="row">
         <div class="col-sm-3">
-           
-            <h5 class="subtitle">About</h5>
-                <p><i class="fa fa-tags"></i> Site ID: <strong><cfoutput>#viewSite.ID#</cfoutput></strong></p>
-                <p><i class="fa fa-pencil-square-o"></i> Edited by: <strong><cfoutput>#viewSite.LastEditedBy#</cfoutput></strong></p>
-                <p><i class="fa fa-pencil-square-o"></i> Edited on: <strong><cfoutput>#viewSite.DateUpdated#</cfoutput></strong></p>
+        <div id="gmap-marker" class="thumbnail img-responsive" style="height: 240px; position: relative; overflow: hidden; -webkit-transform: translateZ(0px); background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; cursor: url(http://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default; -webkit-transform-origin: 10px 84px; -webkit-transform: matrix(1, 0, 0, 1, 0, 0);"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 200;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 201;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 69px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 69px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: -187px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 325px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 69px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: -187px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 325px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: -187px;"></div><div style="width: 256px; height: 256px; overflow: hidden; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 325px;"></div></div></div></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 202;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 69px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 69px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: -187px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 325px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 69px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: -187px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 325px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: -187px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 325px;"></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden; width: 462px; height: 300px;"><img src="http://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&amp;1i1199585&amp;2i2238395&amp;2e1&amp;3u14&amp;4m2&amp;1u462&amp;2u300&amp;5m4&amp;1e0&amp;5sen-US&amp;6sus&amp;10b1&amp;token=2501" style="width: 462px; height: 300px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 69px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt0.googleapis.com/vt?lyrs=m@264039338&amp;src=apiv3&amp;hl=en-US&amp;x=4686&amp;y=8744&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 69px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264032397&amp;src=apiv3&amp;hl=en-US&amp;x=4685&amp;y=8744&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: -187px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt0.googleapis.com/vt?lyrs=m@264015495&amp;src=apiv3&amp;hl=en-US&amp;x=4686&amp;y=8743&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 69px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264034610&amp;src=apiv3&amp;hl=en-US&amp;x=4687&amp;y=8744&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: -187px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264009958&amp;src=apiv3&amp;hl=en-US&amp;x=4685&amp;y=8743&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: -187px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264034600&amp;src=apiv3&amp;hl=en-US&amp;x=4687&amp;y=8743&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 287px; top: 325px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264040823&amp;src=apiv3&amp;hl=en-US&amp;x=4687&amp;y=8745&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -225px; top: 325px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264039121&amp;src=apiv3&amp;hl=en-US&amp;x=4685&amp;y=8745&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 31px; top: 325px; opacity: 1; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img src="http://mt0.googleapis.com/vt?lyrs=m@264034610&amp;src=apiv3&amp;hl=en-US&amp;x=4686&amp;y=8745&amp;z=14&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div></div></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="http://maps.google.com/maps?ll=-12.046103,-77.018999&amp;z=14&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 62px; height: 26px; cursor: pointer;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/google_white2.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 62px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 280px; bottom: 0px; width: 125px;"><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="">Map data ©2014 Google</span></div></div></div><div style="padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 81px; top: 60px; background-color: white;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2014 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2014 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; position: absolute; -webkit-user-select: none; right: 113px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a href="http://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; position: absolute; right: 18px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><a target="_new" title="Report errors in the road map or imagery to Google" href="http://maps.google.com/maps?ll=-12.046103,-77.018999&amp;z=14&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3&amp;skstate=action:mps_dialog$apiref:1&amp;output=classic" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint" draggable="false" style="position: absolute; -webkit-user-select: none; margin-left: 5px; margin-top: 5px; width: 13px; height: 13px; right: 0px; bottom: 0px;"><div style="overflow: hidden; width: 120px; height: 120px; display: none; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 3px; top: 3px; width: 117px; height: 117px; overflow: hidden; -webkit-transform: translateZ(0px); background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; cursor: url(http://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default; -webkit-transform-origin: 0px 0px; -webkit-transform: matrix(1, 0, 0, 1, 0, 0);"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 200;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 201;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; width: 100%; z-index: 202;"><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"><div style="border: 1px solid rgb(255, 255, 255); outline: rgb(0, 0, 0) solid 1px; opacity: 0.35; position: absolute; margin-top: -19px; margin-left: -29px; width: 58px; height: 38px; left: 0px; top: 0px;"><div style="position: absolute; opacity: 0.7; width: 58px; height: 38px; background: rgb(0, 0, 0);"></div></div><div style="border: 1px solid rgb(255, 255, 255); outline: rgb(0, 0, 0) solid 1px; opacity: 0.35; position: absolute; cursor: url(http://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default; margin-top: -19px; margin-left: -29px; width: 58px; height: 38px; left: 0px; top: 0px;"><div style="position: absolute; width: 58px; height: 38px;"></div></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div></div><div style="-webkit-transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -217px; top: -266px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -217px; top: -10px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 39px; top: -266px;"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 39px; top: -10px;"></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1;"><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -217px; top: -266px;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264000000&amp;src=apiv3&amp;hl=en-US&amp;x=585&amp;y=1092&amp;z=11&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: -217px; top: -10px;"><img src="http://mt1.googleapis.com/vt?lyrs=m@264000000&amp;src=apiv3&amp;hl=en-US&amp;x=585&amp;y=1093&amp;z=11&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 39px; top: -266px;"><img src="http://mt0.googleapis.com/vt?lyrs=m@264000000&amp;src=apiv3&amp;hl=en-US&amp;x=586&amp;y=1092&amp;z=11&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div><div style="width: 256px; height: 256px; -webkit-transform: translateZ(0px); position: absolute; left: 39px; top: -10px;"><img src="http://mt0.googleapis.com/vt?lyrs=m@264000000&amp;src=apiv3&amp;hl=en-US&amp;x=586&amp;y=1093&amp;z=11&amp;style=47,37%7Csmartmaps" draggable="false" style="width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; -webkit-transform: translateZ(0px);"></div></div></div></div></div></div></div></div><div style="width: 13px; height: 13px; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div title="Open the overview map" style="width: 13px; height: 13px; overflow: hidden; position: absolute;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" draggable="false" style="position: absolute; left: -2px; top: -364px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></div></div><div class="gmnoprint" draggable="false" controlwidth="78" controlheight="169" style="margin: 5px; -webkit-user-select: none; position: absolute; left: 0px; top: 0px;"><div class="gmnoprint" controlwidth="78" controlheight="80" style="cursor: url(http://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default; width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;"><div class="gmnoprint" controlwidth="78" controlheight="80" style="width: 78px; height: 78px; position: absolute; left: 0px; top: 0px;"><div style="visibility: hidden;"><svg version="1.1" overflow="hidden" width="78px" height="78px" viewBox="0 0 78 78" style="position: absolute; left: 0px; top: 0px;"><circle cx="39" cy="39" r="35" stroke-width="3" fill-opacity="0.2" fill="#f2f4f6" stroke="#f2f4f6"></circle><g transform="rotate(0 39 39)"><rect x="33" y="0" rx="4" ry="4" width="12" height="11" stroke="#a6a6a6" stroke-width="1" fill="#f2f4f6"></rect><polyline points="36.5,8.5 36.5,2.5 41.5,8.5 41.5,2.5" stroke-linejoin="bevel" stroke-width="1.5" fill="#f2f4f6" stroke="#000"></polyline></g></svg></div></div><div class="gmnoprint" controlwidth="59" controlheight="59" style="position: absolute; left: 10px; top: 11px;"><div style="width: 59px; height: 59px; overflow: hidden; position: relative;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"><div title="Pan left" style="position: absolute; left: 0px; top: 20px; width: 19.666666666666668px; height: 19.666666666666668px; cursor: pointer;"></div><div title="Pan right" style="position: absolute; left: 39px; top: 20px; width: 19.666666666666668px; height: 19.666666666666668px; cursor: pointer;"></div><div title="Pan up" style="position: absolute; left: 20px; top: 0px; width: 19.666666666666668px; height: 19.666666666666668px; cursor: pointer;"></div><div title="Pan down" style="position: absolute; left: 20px; top: 39px; width: 19.666666666666668px; height: 19.666666666666668px; cursor: pointer;"></div></div></div></div><div controlwidth="32" controlheight="40" style="cursor: url(http://maps.gstatic.com/mapfiles/openhand_8_8.cur) 8 8, default; position: absolute; left: 23px; top: 85px;"><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false" style="position: absolute; left: -9px; top: -102px; width: 1028px; height: 214px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false" style="position: absolute; left: -107px; top: -102px; width: 1028px; height: 214px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false" style="position: absolute; left: -58px; top: -102px; width: 1028px; height: 214px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div style="width: 32px; height: 40px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout2.png" draggable="false" style="position: absolute; left: -205px; top: -102px; width: 1028px; height: 214px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></div><div class="gmnoprint" controlwidth="0" controlheight="0" style="opacity: 0.6; display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 22px; height: 22px; overflow: hidden; position: absolute; cursor: pointer;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" draggable="false" style="position: absolute; left: -38px; top: -360px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></div><div class="gmnoprint" controlwidth="20" controlheight="39" style="position: absolute; left: 29px; top: 130px;"><div style="width: 20px; height: 39px; overflow: hidden; position: absolute;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt3.png" draggable="false" style="position: absolute; left: -39px; top: -401px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div title="Zoom in" style="position: absolute; left: 0px; top: 2px; width: 20px; height: 17px; cursor: pointer;"></div><div title="Zoom out" style="position: absolute; left: 0px; top: 19px; width: 20px; height: 17px; cursor: pointer;"></div></div></div><div class="gmnoprint" style="margin: 5px; z-index: 0; position: absolute; cursor: pointer; right: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 1px 6px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; border: 1px solid rgba(0, 0, 0, 0.14902); -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 22px; font-weight: 500; background-color: rgb(255, 255, 255); background-clip: padding-box;">Map</div><div style="z-index: -1; padding-top: 2px; -webkit-background-clip: padding-box; border-width: 0px 1px 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: rgba(0, 0, 0, 0.14902); border-bottom-color: rgba(0, 0, 0, 0.14902); border-left-color: rgba(0, 0, 0, 0.14902); -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 25px; text-align: left; display: none; background-color: white; background-clip: padding-box;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 1px 6px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; border-width: 1px 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-top-color: rgba(0, 0, 0, 0.14902); border-right-color: rgba(0, 0, 0, 0.14902); border-bottom-color: rgba(0, 0, 0, 0.14902); -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 38px; background-color: rgb(255, 255, 255); background-clip: padding-box;">Satellite</div><div style="z-index: -1; padding-top: 2px; -webkit-background-clip: padding-box; border-width: 0px 1px 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-right-color: rgba(0, 0, 0, 0.14902); border-bottom-color: rgba(0, 0, 0, 0.14902); border-left-color: rgba(0, 0, 0, 0.14902); -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 25px; text-align: left; display: none; background-color: white; background-clip: padding-box;"><div draggable="false" title="Zoom in to show 45 degree view" style="color: rgb(184, 184, 184); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; display: none; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(241, 241, 241); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">45°</label></div><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; -webkit-user-select: none; font-size: 11px; padding: 3px 8px 3px 3px; direction: ltr; text-align: left; white-space: nowrap; background-color: rgb(255, 255, 255);"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; border: 1px solid rgb(198, 198, 198); border-top-left-radius: 1px; border-top-right-radius: 1px; border-bottom-right-radius: 1px; border-bottom-left-radius: 1px; width: 13px; height: 13px; vertical-align: middle; background-color: rgb(255, 255, 255);"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="http://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; position: absolute; right: 183px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right;"><span>500 m&nbsp;</span><div style="position: relative; display: inline-block; height: 8px; bottom: -1px; width: 54px;"><div style="width: 100%; height: 4px; position: absolute; bottom: 0px; left: 0px; background-color: rgb(255, 255, 255);"></div><div style="position: absolute; left: 0px; top: 0px; width: 4px; height: 8px; background-color: rgb(255, 255, 255);"></div><div style="width: 4px; height: 8px; position: absolute; bottom: 0px; right: 0px; background-color: rgb(255, 255, 255);"></div><div style="position: absolute; height: 2px; bottom: 1px; right: 1px; left: 1px; background-color: rgb(102, 102, 102);"></div><div style="position: absolute; left: 1px; top: 1px; width: 2px; height: 6px; background-color: rgb(102, 102, 102);"></div><div style="width: 2px; height: 6px; position: absolute; bottom: 1px; right: 1px; background-color: rgb(102, 102, 102);"></div></div></div></div></div></div>
+<div class="infosummary">
+  
+        <ul>
+            <li>
+                <div class="datainfo">
+                    <span class="text-muted">Total Trainees</span>
+                    <h4>0</h4>
+                </div>
+                <div id="trainee-chart" class="chart"><canvas width="59" height="30" style="display: inline-block; width: 59px; height: 30px; vertical-align: top;"></canvas></div>   
+            </li>
+            <li>
+                <div class="datainfo">
+                    <span class="text-muted">Total Preceptors</span>
+                    <h4>0</h4>
+                </div>
+                <div id="preceptor-chart" class="chart"><canvas width="59" height="30" style="display: inline-block; width: 59px; height: 30px; vertical-align: top;"></canvas></div>   
+            </li>
+            <li>
+                <div class="datainfo">
+                    <span class="text-muted">Total Experiences</span>
+                    <h4>0</h4>
+                </div>
+                <div id="experience-chart" class="chart"><canvas width="59" height="30" style="display: inline-block; width: 59px; height: 30px; vertical-align: top;"></canvas></div>   
+            </li>
+        </ul>
+      </div>
 
-			<h5 class="subtitle">Contact</h5>
+			<h5 class="subtitle">Contact Site</h5>
             	<abbr title="Phone">P:</abbr><br />    
 <ul class="profile-social-list">
             <li><i class="fa fa-envelope-square"></i> <a href="">Email Address</a></li>
@@ -298,15 +321,23 @@ NULL
         <div class="col-sm-9">
           <div class="profile-header">
                     <h2 class="profile-name"><cfoutput>#viewSite.SiteName#</cfoutput></h2>
-
+					<p><i class="fa fa-tags"></i> Trainee ID: <strong><cfoutput>#viewSite.ID#</cfoutput></strong></p>
+                    <p><i class="fa fa-pencil-square-o"></i> Last Edited: <strong><cfoutput>#viewSite.LastEditedBy#</cfoutput> on <cfoutput>#viewSite.DateUpdated#</cfoutput></strong></p>
                     <div class="mb5"></div>
 							<div class="btn-group mr10">
-                                <a href="?m=e" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Site</a>
-                                <button class="btn btn-primary" type="button"><i class="fa fa-trash-o mr5"></i> Delete</button>
+                                <a href="?m=e#profile" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Site</a>
+                                <button class="btn btn-danger" type="button"><i class="fa fa-trash-o mr5"></i> Delete</button>
                             </div>  
-							<div class="btn-group mr10">
-                                <button class="btn btn-default" type="button"><i class="fa fa-pencil mr5"></i> Add Address</button>
-                                <button class="btn btn-default" type="button"><i class="fa fa-pencil mr5"></i> Add Phone</button>
+							<div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                                    <i class="fa fa-plus mr5"></i> Add
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Add Address</a></li>
+                                    <li><a href="#">Add Phone Number</a></li>
+                                    <li><a href="#">Add Experience Here</a></li>
+                                </ul>
                             </div> 
 							<div class="btn-group">
                                 <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
@@ -324,50 +355,27 @@ NULL
           <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified nav-profile">
           <li class="active"><a href="#snapshot" data-toggle="tab"><strong>Snapshot</strong></a></li>
-          <li><a href="#profile" data-toggle="tab"><strong>Profile</strong></a></li>
-          <li><a href="#rotations" data-toggle="tab"><strong>Current Experiences</strong></a></li>
-          <li><a href="#degrees" data-toggle="tab"><strong>Phone Numbers</strong></a></li>
+          <li><a href="#profile" data-toggle="tab"><strong>Details</strong></a></li>
+          <li><a href="#rotations" data-toggle="tab"><strong>Experiences</strong></a></li>
+          <li><a href="#degrees" data-toggle="tab"><strong>Contacts</strong></a></li>
           <li><a href="#map" data-toggle="tab"><strong>Map</strong></a></li>
         </ul>
         
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane active" id="snapshot">
-<div class="panel-body">
-          
-          <div class="tinystat mr20">
-            <div id="sparkline" class="chart mt5"><canvas width="44" height="30" style="display: inline-block; width: 44px; height: 30px; vertical-align: top;"></canvas></div>
-            <div class="datainfo">
-              <span class="text-muted">Total Trainees</span>
-              <h4>$630,201</h4>
+<div class="row">
+            <div class="col-md-6">
+              <h5 class="subtitle">Trainee Level</h5>
+              <p>Showing the typical trainee distribution at this site in terms of gender</p>
+              <div id="donut-chart" style="height: 200px;"></div>
             </div>
-          </div><!-- tinystat -->
-              
-          <div class="tinystat mr20">
-            <div id="sparkline2" class="chart mt5"><canvas width="50" height="33" style="display: inline-block; width: 50px; height: 33px; vertical-align: top;"></canvas></div>
-            <div class="datainfo">
-              <span class="text-muted">Total Experiences</span>
-              <h4>$106,850</h4>
+            <div class="col-md-6">
+              <h5 class="subtitle">Preceptor Preferance</h5>
+              <p>Showing the most popular preceptor at this field experience site </p>
+              <div id="donut-chart2" style="height: 200px;"></div>
             </div>
-          </div><!-- tinystat -->
-              
-          <div class="tinystat mr20">
-            <div id="sparkline3" class="chart mt5"><canvas width="33" height="33" style="display: inline-block; width: 33px; height: 33px; vertical-align: top;"></canvas></div>
-            <div class="datainfo">
-              <span class="text-muted">Total Partners</span>
-              <h4>23,001,090</h4>
-            </div>
-          </div><!-- tinystat -->
-          
-          <div class="tinystat">
-            <div id="sparkline4" class="chart mt5"><canvas width="50" height="33" style="display: inline-block; width: 50px; height: 33px; vertical-align: top;"></canvas></div>
-            <div class="datainfo">
-              <span class="text-muted">Total Populations</span>
-              <h4>$11,090</h4>
-            </div>
-          </div><!-- tinystat -->
-              
-        </div>
+          </div>
           </div>
           <div class="tab-pane" id="profile">
             <!-- activity-list -->
@@ -416,7 +424,7 @@ NULL
                 <div class="col-sm-4">
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">                
-                  <input type="text" placeholder="Enter Site Name" class="form-control" name="SiteName" required>
+                  <input type="text" placeholder="Enter Site Name" class="form-control" name="SiteName" value="<cfoutput>#viewSite.SiteName#</cfoutput>" required>
               	</cfcase>
                 <cfcase value="View">
                 <label class="text-primary alignleft"><cfoutput>#viewSite.SiteName#</cfoutput></label>
@@ -441,7 +449,7 @@ NULL
             <div class="col-sm-4">
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">             
-              <input type="text" placeholder="Enter Contact Person" class="form-control" name="ContactPerson">
+              <input type="text" placeholder="Enter Contact Person" class="form-control" name="ContactPerson" value="<cfoutput>#viewSite.ContactPerson#</cfoutput>">
               	</cfcase>
                 <cfcase value="View">
                 <label class="text-primary alignleft"><cfoutput>#viewSite.ContactPerson#</cfoutput></label>
@@ -456,7 +464,7 @@ NULL
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">                      
                   <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input type="text" placeholder="Office Number" id="OfficePhone" name="OfficePhone" class="form-control" required>
+                    <input type="text" placeholder="Office Number" id="OfficePhone" name="OfficePhone" class="form-control" value="<cfoutput>#viewSite.OfficePhone#</cfoutput>" required>
                   </div>
                   <label class="error" for="OfficePhone"></label>
 				</cfcase>
@@ -471,11 +479,11 @@ NULL
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">               
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input type="text" placeholder="Alternate Number" id="AlternatePhone" name="AlternatePhone" class="form-control">
+                <input type="text" placeholder="Alternate Number" id="AlternatePhone" name="AlternatePhone" class="form-control" value="<cfoutput>#viewSite.AlternatePhone#</cfoutput>">
               </div>
 				</cfcase>
                 <cfcase value="View">
-                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                <label class="text-primary alignleft"><cfoutput>#viewSite.AlternatePhone#</cfoutput></label>
                 </cfcase>
             </cfswitch>                             
             </div>
@@ -486,11 +494,11 @@ NULL
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">             
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                <input type="text" placeholder="Office Email" id="SiteEmail" name="SiteEmail" class="form-control">
+                <input type="text" placeholder="Office Email" id="SiteEmail" name="SiteEmail" class="form-control" value="<cfoutput>#viewSite.SiteEmail#</cfoutput>">
               </div>
 				</cfcase>
                 <cfcase value="View">
-                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                <label class="text-primary alignleft"><cfoutput>#viewSite.SiteEmail#</cfoutput></label>
                 </cfcase>
             </cfswitch>               
             </div>
@@ -500,12 +508,12 @@ NULL
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">               
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                <input type="text" placeholder="Site Website Address" id="Website" name="Website" class="form-control">
+                <input type="text" placeholder="Site Website Address" id="Website" name="Website" class="form-control" value="<cfoutput>#viewSite.Website#</cfoutput>">
               </div> 
               <span class="help-block">* Leave blank if No Website Avaliable</span>
 				</cfcase>
                 <cfcase value="View">
-                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                <label class="text-primary alignleft"><cfoutput>#viewSite.Website#</cfoutput></label>
                 </cfcase>
             </cfswitch>        
             </div>
@@ -528,12 +536,12 @@ NULL
                             <div class="reqd">
                               <label class="col-sm-2 control-label">Street Address 1 <span class="asterisk">*</span></label>
                               <div class="col-sm-4">
-                                <input type="text" placeholder="Street Address 1" class="form-control"  name="Address1" required>
+                                <input type="text" placeholder="Street Address 1" class="form-control"  name="Address1" value="<cfoutput>#viewSite.Address1#</cfoutput>" required>
                               </div>
                               </div>
                               <label class="col-sm-2 control-label">Street Address 2</label>
                               <div class="col-sm-4">
-                                <input type="text" placeholder="Street Address 2" class="form-control"  name="Address2">
+                                <input type="text" placeholder="Street Address 2" class="form-control"  name="Address2" value="<cfoutput>#viewSite.Address2#</cfoutput>">
                               </div>
                             </div>
                             <div class="form-group">
@@ -541,7 +549,7 @@ NULL
                               <label class="col-sm-2 control-label">City <span class="asterisk">*</span></label>
                               <div class="col-sm-4">
                                   <select class="form-control" data-placeholder="Choose a City..." name="City" required>
-                                      <option value="">Choose a City...</option>
+                                      <option value="#viewSite.City#"><cfoutput>#viewSite.City#</cfoutput></option>
                                     <cfoutput query="rCities">
                                        <option value="#City#">#City#</option>
                                     </cfoutput>
@@ -550,7 +558,7 @@ NULL
                              </div> 
                               <label class="col-sm-2 control-label">County </label>
                               <div class="col-sm-4">
-                                <input type="text" placeholder="County" class="form-control"  name="County">
+                                <input type="text" placeholder="County" class="form-control"  name="County" value="<cfoutput>#viewSite.OfficePhone#</cfoutput>">
                               </div>
                             </div>
                             <div class="form-group">
@@ -558,17 +566,16 @@ NULL
                               <div class="col-sm-4">
                                 <select class="form-control" name="state" id="state" required>
                                   <option value="AZ">Arizona</option>
-                                  <option value="">-----------</option>
                                 </select>
                               </div>
                               
                               <label class="col-sm-2 control-label">Country/Zip <span class="asterisk">*</span></label>
                               <div class="col-sm-3">
-                                <input type="text" placeholder="Country" class="form-control" value="United States of America"  name="Country">
+                                <input type="text" placeholder="Country" class="form-control" value="United States of America"  name="Country" value="<cfoutput>#viewSite.Country#</cfoutput>">
                               </div>
 
                               <div class="col-sm-1 reqd">
-                                <input type="text" placeholder="Zip Code" class="form-control"  name="Zip" required>
+                                <input type="text" placeholder="Zip Code" class="form-control"  name="Zip" value="<cfoutput>#viewSite.ZIP#</cfoutput>" required>
                               </div>
                             </div>
                             
@@ -576,7 +583,7 @@ NULL
                             <label class="col-sm-2 control-label">GeoCode Tag</label>
                             <div class="col-sm-4">
                               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control" onClick="google.maps.event.trigger(map, 'resize');">
+                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control" onClick="google.maps.event.trigger(map, 'resize');" value="<cfoutput>#viewSite.GeoCodeLink#</cfoutput>">
                               </div>
                             </div>
                           
@@ -611,7 +618,7 @@ NULL
             <div class="col-sm-4">
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">             
-              <select class="form-control" data-placeholder="Choose a Site Type..." name="SiteType" required>
+              <select class="form-control" data-placeholder="Choose a Site Type..." name="SiteType" value="<cfoutput>#viewSite.OfficePhone#</cfoutput>" required>
                   <option value="">Choose a Site Type...</option>
                 <cfoutput query="rSiteTypes">
                    <option value="#ID#">#SiteType#</option>
@@ -686,7 +693,7 @@ NULL
             <div class="col-sm-10">
                 <cfswitch expression='#mode#'>
         		<cfcase value="Edit">             
-				<textarea class="form-control" name="notes" rows="3"></textarea>
+				<textarea class="form-control" name="notes" rows="3"><cfoutput>#viewSite.OfficePhone#</cfoutput></textarea>
 				</cfcase>
                 <cfcase value="View">
                 <label class="text-primary alignleft"><cfoutput>#viewSite.Notes#</cfoutput></label>
@@ -869,17 +876,24 @@ NULL
                     
       </div>
         <!-- panel-body --> 
-      <div class="panel-footer">
+      <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">        
+        <div class="panel-footer">
           <div class="row">
-            <div class="col-sm-12">
-              <input type="hidden" name="addSiteHDN" value="True">
-              <button class="btn btn-primary ">Submit</button>
+            <div class="col-sm-12 ">
+              <input type="hidden" name="editSiteHDN" value="True">
+              <button class="btn btn-primary">Save</button>
               &nbsp;
-              <button class="btn btn-default" type="reset">Reset</button>
-              
+              <button class="btn btn-default">Cancel</button>
             </div>
           </div>
-      </div>
+        </div>
+              	</cfcase>
+                <cfcase value="View">
+                
+                </cfcase>
+            </cfswitch>
+      
    	</form>
           </div>
 
@@ -917,7 +931,7 @@ NULL
     
   </div>
   <!-- mainpanel end -->
-  
+  </div>
   <!-- rightpanel -->
   
   
@@ -930,6 +944,8 @@ NULL
 <script src="../../js/jquery.sparkline.min.js"></script>
 <script src="../../js/toggles.min.js"></script>
 <script src="../../js/retina.min.js"></script>
+<script src="../../js/morris.min.js"></script>
+<script src="/js/raphael-2.1.0.min.js"></script>
 <script src="../../js/jquery.cookies.js"></script>
 
 <script src="../../js/jquery-ui-1.10.3.min.js"></script>
@@ -939,8 +955,7 @@ NULL
 <script src="../../js/jquery.maskedinput.min.js"></script>
 <script src="../../js/jquery.gritter.min.js"></script>
 
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="../../js/gmaps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 <script src="../../js/custom.js"></script>
 
@@ -992,58 +1007,81 @@ $.validator.setDefaults({ ignore: ":hidden:not(select)"})
 </script>
 <script>
     jQuery(document).ready(function() {
+    new Morris.Donut({
+        element: 'donut-chart',
+        data: [
+          {label: "Male", value: 60},
+          {label: "Female", value: 40}
+        ]
+    });
+    
+    new Morris.Donut({
+        element: 'donut-chart2',
+        data: [
+          {label: "John Doe", value: 33},
+          {label: "Jane Doe", value: 45},
+          {label: "Wildcat", value: 22}
+
+        ],
+        colors: ['#D9534F','#1CAF9A','#428BCA','#5BC0DE','#428BCA']
+    });
+
+    jQuery('#trainee-chart').sparkline([66,34], {
+		  type: 'pie', 
+		  height:'33px',
+        sliceColors: ['#F0AD4E','#428BCA'],
+tooltipFormat: '{{offset:offset}} ({{percent.1}}%)',
+    tooltipValueLookups: {
+        'offset': {
+            0: 'Past',
+            1: 'Current',
+        }
+    },		
+    });
+
+    jQuery('#preceptor-chart').sparkline([0,100], {
+		  type: 'pie', 
+		  height:'33px',
+        sliceColors: ['#D9534F','#1CAF9A'],
+    tooltipFormat: '{{offset:offset}} ({{percent.1}}%)',
+    tooltipValueLookups: {
+        'offset': {
+            0: 'Past',
+            1: 'Current',
+        }
+    },		
+    });
+
+    jQuery('#experience-chart').sparkline([12,88], {
+		  type: 'pie', 
+		  height:'33px',
+        sliceColors: ['#F0AD4E','#5BC0DE'],
+tooltipFormat: '{{offset:offset}} ({{percent.1}}%)',
+    tooltipValueLookups: {
+        'offset': {
+            0: 'Past',
+            1: 'Current',
+        }
+    },			
+    });
         
         // Chosen Select
-        jQuery(".chosen-select").chosen({'width':'100%','white-space':'nowrap'});
         
-	
-    });
+});
 </script>
 <script>
-    jQuery(document).ready(function(){
-        
-        new GMaps({
-            div: '#gmap',
-            lat: -12.043333,
-            lng: -77.028333
-        });
-        
-        var map_marker = new GMaps({
-            div: '#gmap-marker',
-            lat: -12.043333,
-            lng: -77.028333
-        });
-        
-        map_marker.addMarker({
-            lat: -12.043333,
-            lng: -77.028333,
-            click: function(e) {
-              alert('You clicked in this marker');
-            }
-        });
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(32.20031984247428, -110.92999805822753);
+  var mapOptions = {
+    zoom: 7,
+    center: latlng
+  }
+  map = new google.maps.Map(document.getElementById('map-marker'), mapOptions);
+}
 
-        
-    });
+google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
-<cfif IsDefined("Session.NewSiteAdded") AND #Session.NewSiteAdded# EQ "Yes">
-	<cfset Session.NewSiteAdded="No">
-    <cfoutput>
-    <script>
-    jQuery(document).ready(function() {
-	 jQuery.gritter.add({
-		title: 'New Trainee Added',
-		text: 'Site record <cfoutput>#Session.SiteID#</cfoutput> was successfully added',
-      class_name: 'growl-primary',
-      image: '../../images/screen.png',
-		sticky: false,
-		time: ''
-	 });
-	 return false;
-	 });
-	 </script>
-    </cfoutput>
-</cfif>
 
 <cfif IsDefined("Session.SiteRecordEdit") AND #Session.SiteRecordEdit# EQ "Yes">
 	<cfset Session.SiteRecordEdit="No">

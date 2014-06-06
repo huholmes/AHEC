@@ -222,6 +222,7 @@ NULL
   <link href="../../css/style.default.css" rel="stylesheet">
   <link href="../../css/jquery.datatables.css" rel="stylesheet">
   <link href="../../css/jquery.gritter.css" rel="stylesheet">
+  <link id="fontswitch" rel="stylesheet" href="/css/font.helvetica-neue.css">
   <link rel="stylesheet" type="text/css" href="http://redbar.arizona.edu/sites/default/files/ua-banner/ua-web-branding/css/ua-web-branding.css">	
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -267,35 +268,107 @@ NULL
           <img src="../../images/profilr.jpg" class="thumbnail img-responsive" alt="" style="margin-left:auto;margin-right:auto;"/>
           
           <div class="mb30"></div>
-          <ul class="profile-social-list">
-            <a href="?p=t" class="btn btn-primary mb20 w100"><i class="fa fa-download"></i> Print Report</a><br>
-            <a href="?m=e" class="btn btn-success mb10 w100"><i class="fa fa-pencil"></i> Edit Trainee</a><br>
-            <button class="btn btn-white mb5 w100"><i class="fa fa-plus-circle"></i> Add Field Experience</button><br>
-            <button class="btn btn-white mb5 w100"><i class="fa fa-plus-circle"></i> Add Degree</button><br>
-            <button class="btn btn-white w100"><i class="fa fa-plus-circle"></i> Add Support Info</button>
-          </ul>
+            <h5 class="subtitle">Trainee Tasks</h5>
+                
+<div class="widget-todo mb5">
+              <ul class="todo-list">
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="CP" checked disabled>
+                        <label for="CP">Complete Profile</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="AE" disabled>
+                        <label for="AE">Add Experience</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="AE" disabled>
+                        <label for="AE">Add Support Info</label>
+                    </div>
+                </li>                
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="CR" disabled>
+                        <label for="CR">Completion Report</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="GC" disabled>
+                        <label for="GC">Graduation Check</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="FUR" disabled>
+                        <label for="FUR">Follow Up Report</label>
+                    </div>
+                </li>
+                <li>
+                    <div class="ckbox ckbox-primary">
+                        <input type="checkbox" value="1" id="AFU" disabled>
+                        <label for="AFU">Additional Follow Up</label>
+                    </div>
+                </li>
+              </ul>
+          </div>				
+			<h5 class="subtitle">Contact</h5>
+<ul class="profile-social-list">
+            <li><i class="fa fa-envelope-square"></i> <a href="">Email Address</a></li>
+          </ul>                
+          <div class="mb30"></div>
           
           <div class="mb30"></div>
           
         </div><!-- col-sm-3 -->
         <div class="col-sm-9">
-          
           <div class="profile-header">
-            <h2 class="profile-name"><cfoutput>#viewTrainee.FirstName# #viewTrainee.LastName#</cfoutput></h2>
+                    <h2 class="profile-name"><cfoutput>#viewTrainee.FirstName# #viewTrainee.LastName#</cfoutput></h2>
+					<p><i class="fa fa-tags"></i> Trainee ID: <strong><cfoutput>#viewTrainee.ID#</cfoutput></strong></p>
+                    <p><i class="fa fa-pencil-square-o"></i> Last Edited: <strong><cfoutput>#viewTrainee.LastEditedBy#</cfoutput> on <cfoutput>#viewTrainee.DateUpdated#</cfoutput></strong></p>
+                    <div class="mb5"></div>
+							<div class="btn-group mr10">
+                                <a href="?m=e" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                <button class="btn btn-danger" type="button"><i class="fa fa-trash-o mr5"></i> Delete</button>
+                            </div>  
+							<div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                                    <i class="fa fa-plus mr5"></i> Add
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Add Field Experience</a></li>
+                                    <li><a href="#">Add Degree Information</a></li>
+                                    <li><a href="#">Add Support Information</a></li>
+                                    <li><a href="#">Add Address</a></li>
+                                    <li><a href="#">Add Completion Report</a></li>
+                                    <li><a href="#">Add FollowUp Report</a></li>
+                                </ul>
+                            </div>  
+							<div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
+                                    <i class="fa fa-arrow-circle-o-down mr5"></i> Export
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">PDF</a></li>
+                                    <li><a href="#">Print</a></li>
+                                </ul>
+                            </div>                                                             
+                  </div>
 
-
-            <p><i class="fa fa-tags"></i> Trainee ID: <strong><cfoutput>#viewTrainee.ID#</cfoutput></strong></p>
-            <p><i class="fa fa-pencil-square-o"></i> Last Edited by: <strong><cfoutput>#viewTrainee.LastEditedBy# on #viewTrainee.DateUpdated#</cfoutput></strong></p>
-
-            <div class="mb5"></div>
-
-          </div><!-- profile-header -->
           
           <!-- Nav tabs -->
-        <ul class="nav nav-tabs nav-dark">
+        <ul class="nav nav-tabs nav-justified nav-profile">
           <li class="active"><a href="#profile" data-toggle="tab"><strong>Profile</strong></a></li>
-          <li><a href="#rotations" data-toggle="tab"><strong>Field Experiences</strong></a></li>
+          <li><a href="#rotations" data-toggle="tab"><strong>Experiences</strong></a></li>
           <li><a href="#degrees" data-toggle="tab"><strong>Degrees</strong></a></li>
+          <li><a href="#degrees" data-toggle="tab"><strong>Completion</strong></a></li>
+          <li><a href="#degrees" data-toggle="tab"><strong>Follow Ups</strong></a></li>
         </ul>
         
         <!-- Tab panes -->

@@ -15,10 +15,13 @@
     <cfset This.HostName = '#cgi.script_name#'>
     <cfset This.ActiveFolder = 'hp'>
 <!--Database Calls-->
-    <cfquery name="rTrainees" datasource="#datasource2#" maxrows="500">
-        SELECT * FROM Trainees ORDER BY id ASC
+    <cfquery name="rSites" datasource="#datasource2#">
+        SELECT S.ID, S.Status, S.SiteName, S.ContactPerson, SP.OfficePhone, SP.AlternatePhone, S.SiteEmail, S.Website, SA.Address1, SA.Address2, SA.City, SA.County, SA.State, SA.Country, SA.ZIP, S.GeocodeLink,S.Center, S.SiteType, S.Notes, S.CreatedBy, S.DateCreated, S.LastEditedBy, S.DateUpdated
+		FROM Sites S  
+        LEFT JOIN dbo.Phones SP ON SP.TypeID = S.ID
+        LEFT JOIN dbo.Addresses SA ON SA.TypeID = S.ID
     </cfquery>
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +54,7 @@
     
 </div>
 <!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark red-grad">
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue-grad">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
     <p>The University of Arizona</p>
   </a>
@@ -80,7 +83,7 @@
             				</button>
                     </ul>
                     <h4 class="panel-title">Showing All Sites</h4>
-                    <p><cfoutput>#rTrainees.RecordCount#</cfoutput> result</p>
+                    <p><cfoutput>#rSites.RecordCount#</cfoutput> result</p>
                 </div><!-- panel-heading -->
                 <div class="panel-body">
 
@@ -89,22 +92,22 @@
               <thead>
                  <tr>
                     <th>ID</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
+                    <th>Site Name</th>
                     <th>Status</th>
-                    <th>Email</th>
+                    <th>City</th>
+                    <th>Website</th>
                     <th>Actions</th>
                  </tr>
               </thead>
               <tbody>
-               <cfloop query="rTrainees">
+               <cfloop query="rSites">
                  <tr>
                     <td><a href="ae/vTrainee.cfm?id=<cfoutput>#ID#</cfoutput>"><cfoutput>#int(ID)#</cfoutput></a></td>
-                    <td><cfoutput>#lastname#</cfoutput></td>
-                    <td><cfoutput>#firstname#</cfoutput></td>
-                    <td><cfoutput>#status#</cfoutput></td>
-                    <td><cfoutput>#emailpreferred#</cfoutput></td>
-                    <td><i class="fa fa-eye"></i>  <a href="ae/vTrainee.cfm?id=<cfoutput>#ID#</cfoutput>"><i class="fa fa-pencil"></i></a>  <i class="fa fa-trash-o"></i></td>
+                    <td><cfoutput>#SiteName#</cfoutput></td>
+                    <td><cfoutput>#Status#</cfoutput></td>
+                    <td><cfoutput>#City#</cfoutput></td>
+                    <td><a href="<cfoutput>#website#</cfoutput>" target="_blank"><cfoutput>Visit</cfoutput></a></td>
+                    <td><i class="fa fa-eye"></i>  <a href="ae/vSite.cfm?id=<cfoutput>#ID#</cfoutput>"><i class="fa fa-pencil"></i></a>  <i class="fa fa-trash-o"></i></td>
                  </tr>
 				</cfloop>
 

@@ -493,7 +493,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
                               <div class="col-sm-4">
                                 <select class="form-control" name="state" id="state" required>
                                   <option value="AZ">Arizona</option>
-                                  <option value="">-----------</option>
                                 </select>
                               </div>
                               
@@ -572,7 +571,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
       </div>
 <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">Notes</h4>
+          <h4 class="panel-title">Additional Notes</h4>
         </div>
         <div class="panel-body panel-body-nopadding">
           <div class="form-group">

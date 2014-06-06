@@ -1,6 +1,6 @@
 <cfcomponent>
 
-<CFAPPLICATION NAME="" SESSIONMANAGEMENT="YES">
+<CFAPPLICATION NAME="" SESSIONMANAGEMENT="YES" sessiontimeout=#CreateTimeSpan(0,0,45,0)#>
 <!--Main Database Connections-->
 	<cfset datasource = "ahecadmindb">
     <cfset datasource2 = "azahec">
