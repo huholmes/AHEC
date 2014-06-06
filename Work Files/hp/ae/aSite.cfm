@@ -1,4 +1,4 @@
-<cfinclude template="../../connection/connection.cfc">
+ <cfinclude template="../../connection/connection.cfc">
 <!--Check if User has been authenticated-->
 <cfif IsDefined("Session.UserID")>
   <cfelse>
@@ -8,7 +8,11 @@
   <cfset StructClear(Session)>
   <cflocation url="../../signin.cfm" addtoken="NO" >
 </cfif>
-
+<!--Global Permission Variables-->
+<!--Page Level Permission Varaables-->
+	<!--1. Only Program Office has access to certain elements-->
+    	
+    
 <!--Set up Page Variables for Header include-->
 	<cfset This.PageName = 'Add Field Experience Site'>
     <cfset This.Icon = 'fa fa-plus'>
@@ -18,7 +22,7 @@
     <cfset This.ActiveFolder = 'hp'>
     <cfset This.ActiveSubFolder = 'hpSites'>
 <!--Database Calls-->
-    <cfquery name="rSiteTypes" datasource="#datasource2#">
+    <cfquery name="rSiteTypes" datasource="#datasource2#" >
         SELECT * FROM SiteTypes ORDER BY ID ASC
     </cfquery>
     
@@ -239,10 +243,12 @@ NULL
 ,1
 )
   </cfquery>
+  	
+  <cfset Session.SiteID="#This.ID#"> 
   <cfset Session.NewSiteAdded="Yes">
   <cfset Session.SiteMode="V">
-  
-  <cflocation url="aSite.cfm" addtoken="no">
+	<cflocation url = "aSite.cfm" addtoken="no">
+      
 </cfif>
 
 <!DOCTYPE html>
@@ -266,34 +272,56 @@ NULL
     <script>
 var geocoder;
 var map;
+var markersArray = [];
+
 function initialize() {
   geocoder = new google.maps.Geocoder();
-  var latlng = new google.maps.LatLng(-34.397, 150.644);
+  var latlng = new google.maps.LatLng(32.20031984247428, -110.92999805822753);
   var mapOptions = {
-    zoom: 8,
+    zoom: 7,
     center: latlng
   }
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
 
+function resize(){
+  var center = map.getCenter(); 
+    google.maps.event.trigger(map, 'resize'); 
+    map.setCenter(center);	
+}
 function codeAddress() {
+  clearOverlays();
   var address = document.getElementById('address').value;
   geocoder.geocode( { 'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
+	  
       var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
-      });
+	});
+			markersArray.push(marker);
+			var position=marker.getPosition();
+			var lat=position.lat();
+			var lng=position.lng();	  
+	  		document.getElementById("GeoCodeLink").value = lat+','+lng;
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+  
+}
+
+function clearOverlays() {
+  for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+  }
+  markersArray.length = 0;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
     </script>
+    
 <style type="text/css">
       #panel {
         position: absolute;
@@ -307,8 +335,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	#map-canvas {
         height: 500px;
         margin: 0px;
-        padding: 0p		
+        padding: 0px;		
       }
+	  
 </style>
 </head>
 
@@ -316,7 +345,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 <!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue-grad"> <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue"> <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
 <p>The University of Arizona</p>
   </a> </div>
 <section> 
@@ -482,7 +511,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                             <label class="col-sm-2 control-label">GeoCode Tag</label>
                             <div class="col-sm-4">
                               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control">
+                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control" onclick="setTimeout('resize()', 1000);" >
                               </div>
                             </div>
                           
@@ -511,7 +540,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <div class="form-group">  
           <div class="reqd" >      
             <label class="col-sm-2 control-label">Site's Partners/Consortia <span class="asterisk">*</span></label>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
               <select class="form-control chosen-select" multiple data-placeholder="Choose Site's Partners/Consortia..." name="SitePartners" required>
                 <option value=""></option>
                 <cfoutput query="rPartners">
@@ -526,7 +555,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <div class="form-group">
           <div class="reqd">
             <label class="col-sm-2 control-label">Vunerable Populations Served <span class="asterisk">*</span></label>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
               <select class="form-control chosen-select" multiple data-placeholder="Choose Vunerable Populations Served..." name="SitePopulations" required>
                 <option value=""></option>
                 <cfoutput query="rPopulations">
@@ -563,7 +592,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="panel-heading">
           <h4 class="panel-title">Program Office Use Only</h4>
           		<div class="panel-btns">
-                <a href="" class="minimize">−</a>
+                <a href="" class="minimize">-</a>
 		</div>
         </div>
 
@@ -734,6 +763,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
               <button class="btn btn-primary ">Submit</button>
               &nbsp;
               <button class="btn btn-default" type="reset">Reset</button>
+              
             </div>
           </div>
       </div>
@@ -745,7 +775,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
   <!-- mainpanel end -->
   <!-- Modal for GeoCoding -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop="static" aria-hidden="true" style="display: none;">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop="static" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -764,21 +794,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
 </div>
   <!-- Modal for End of Completion -->
-  <div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myModalLabel">Record Successfully added</h4>
+        <h4 class="modal-title" id="myModalLabel">New Field Experience Site Added</h4>
       </div>
       <div class="modal-body">
-        Site record <cfoutput>#This.ID#</cfoutput> was successfully added
+        The Field Experience site was sucessfully added. <br />
+        
+        <p>Would you like to add a new field experience site or view the record that you just added?</p>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-primary" href="vSite.cfm?id=#this.ID#">View Added Record</a>
-        <a class="btn btn-primary" href="aSite.cfm">Add New Record</a>
+        <cfif IsDefined("Session.SiteID") AND #Session.SiteID# NEQ ''>
+        <a class="btn btn-primary" href="vSite.cfm?id=<cfoutput>#Session.SiteID#</cfoutput>">View Record</a>
+        <cfelse>
+        <a class="btn btn-primary" href="vSite.cfm?id=1">View Record</a>
+        </cfif>
+        </div>
+        <a class="btn btn-success" href="aSite.cfm">Add New</a>
         
-        <a class="btn btn-default pull-left" href="../hpSites.cfm">Back to Sites</a>
+        <a class="btn btn-primary pull-left" href="../hpSites.cfm">Back to Sites</a>
       </div>
     </div><!-- modal-content -->
   </div><!-- modal-dialog -->
@@ -863,14 +899,16 @@ $.validator.setDefaults({ ignore: ":hidden:not(select)"})
 </script>
 
 <cfif IsDefined("Session.NewSiteAdded") AND #Session.NewSiteAdded# EQ "Yes">
-	<cfset Session.NewSiteAdded = "No">
-	<cfoutput>
-	   <script type="text/javascript">
-       jQuery(document).ready(function() {
-       $( '#exitModal' ).modal('show');
-		});
-       </script>
-   </cfoutput> 
+<cfset Session.NewSiteAdded = "No">
+<script>
+    jQuery(document).ready(function() {
+        
+        // Chosen Select
+        $('#myModal').modal('show');
+        
+	
+    });
+</script>
 </cfif>
 <p>&nbsp;</p>
 </body>

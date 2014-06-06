@@ -128,8 +128,7 @@
     <div class="pageheader">
       <h2><i class="<cfoutput>#This.Icon#</cfoutput>"></i> <cfoutput>#This.PageName#</cfoutput></h2>
       <div class="breadcrumb-wrapper">
-        <span class="label">You are here:</span>
-        <ol class="breadcrumb">
+                <ol class="breadcrumb">
           <li><a href="<cfoutput>#pnavLink#</cfoutput>"><cfoutput>#BreadCrumbs.NavTitle#</cfoutput></a></li>
           <cfif isdefined("This.ActiveSubFolder")>
           	<li><a href="<cfoutput>#spnavLink#</cfoutput>"><cfoutput>#SBreadCrumbs.NavTitle#</cfoutput></a></li>

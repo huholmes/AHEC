@@ -44,7 +44,19 @@
         
         <cfprocresult name="viewSite" resultset="1">
       </cfstoredproc>
-    
+
+      <cfstoredproc procedure="dbo.viewSitePartners" datasource="#datasource2#">
+        <cfprocparam type="IN" dbvarname="@SiteID" value="#Session.SiteID#" cfsqltype="CF_SQL_CHAR">
+        
+        <cfprocresult name="viewSitePartners">
+      </cfstoredproc>
+      
+      <cfstoredproc procedure="dbo.viewSitePopulations" datasource="#datasource2#">
+        <cfprocparam type="IN" dbvarname="@SiteID" value="#Session.SiteID#" cfsqltype="CF_SQL_CHAR">
+        
+        <cfprocresult name="viewSitePopulations">
+      </cfstoredproc>      
+       
     <cfquery name="viewDegrees" datasource="#datasource2#">
         SELECT * FROM Degrees where TraineeId ='#Session.SiteID#'
     </cfquery>
@@ -227,13 +239,14 @@ NULL
   <link href="../../css/style.default.css" rel="stylesheet">
   <link href="../../css/jquery.datatables.css" rel="stylesheet">
   <link href="../../css/jquery.gritter.css" rel="stylesheet">
+  <link id="fontswitch" rel="stylesheet" href="../../css/font.helvetica-neue.css">
   <link rel="stylesheet" type="text/css" href="http://redbar.arizona.edu/sites/default/files/ua-banner/ua-web-branding/css/ua-web-branding.css">	
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="js/html5shiv.js"></script>
   <script src="js/respond.min.js"></script>
   <![endif]-->
-
+	
 </head>
 
 <body>
@@ -243,14 +256,11 @@ NULL
     <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
 </div>
 <!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue-grad">
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark red-grad">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
     <p>The University of Arizona</p>
   </a>
 </div>
-
-
-
 <section>
   
     <!-- leftpanel -->
@@ -266,38 +276,69 @@ NULL
     
         <!-- content dynamic -->
 <div class="contentpanel">
-      
+
       <div class="row">
         <div class="col-sm-3">
-          <img src="../../images/profilr.jpg" class="thumbnail img-responsive" alt="" style="margin-left:auto;margin-right:auto;"/>
-          
-          <div class="mb30"></div>
-          <ul class="profile-social-list">
-            <a href="?p=t" class="btn btn-primary mb20 w100"><i class="fa fa-download"></i> Print Report</a><br>
-            <a href="?m=e" class="btn btn-success mb10 w100"><i class="fa fa-pencil"></i> Edit Site</a><br>
-            <button class="btn btn-white mb5 w100"><i class="fa fa-plus-circle"></i> Add Address</button><br>
-            <button class="btn btn-white mb5 w100"><i class="fa fa-plus-circle"></i> Add Phone Number</button><br>
-          </ul>
-          
+           
+            <h5 class="subtitle">About</h5>
+                <p><i class="fa fa-tags"></i> Site ID: <strong><cfoutput>#viewSite.ID#</cfoutput></strong></p>
+                <p><i class="fa fa-pencil-square-o"></i> Edited by: <strong><cfoutput>#viewSite.LastEditedBy#</cfoutput></strong></p>
+                <p><i class="fa fa-pencil-square-o"></i> Edited on: <strong><cfoutput>#viewSite.DateUpdated#</cfoutput></strong></p>
+
+			<h5 class="subtitle">Contact</h5>
+            	<abbr title="Phone">P:</abbr><br />    
+<ul class="profile-social-list">
+            <li><i class="fa fa-envelope-square"></i> <a href="">Email Address</a></li>
+            <li><i class="fa fa-desktop"></i> <a href="">Website</a></li>
+          </ul>                
           <div class="mb30"></div>
           
         </div><!-- col-sm-3 -->
         <div class="col-sm-9">
-          
           <div class="profile-header">
-            <h2 class="profile-name"><cfoutput>#viewSite.SiteName#</cfoutput></h2>
+                    <h2 class="profile-name"><cfoutput>#viewSite.SiteName#</cfoutput></h2>
 
-
-            <p><i class="fa fa-tags"></i> Site ID: <strong><cfoutput>#viewSite.ID#</cfoutput></strong></p>
-            <p><i class="fa fa-pencil-square-o"></i> Last Edited by: <strong><cfoutput>#viewSite.LastEditedBy# on #viewSite.DateUpdated#</cfoutput></strong></p>
-
-            <div class="panel-body">
+                    <div class="mb5"></div>
+							<div class="btn-group mr10">
+                                <a href="?m=e" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Site</a>
+                                <button class="btn btn-primary" type="button"><i class="fa fa-trash-o mr5"></i> Delete</button>
+                            </div>  
+							<div class="btn-group mr10">
+                                <button class="btn btn-default" type="button"><i class="fa fa-pencil mr5"></i> Add Address</button>
+                                <button class="btn btn-default" type="button"><i class="fa fa-pencil mr5"></i> Add Phone</button>
+                            </div> 
+							<div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
+                                    <i class="fa fa-arrow-circle-o-down mr5"></i> Export
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">PDF</a></li>
+                                    <li><a href="#">Print</a></li>
+                                </ul>
+                            </div>                                                             
+                  </div>
+          <!-- profile-header -->
+          
+          <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified nav-profile">
+          <li class="active"><a href="#snapshot" data-toggle="tab"><strong>Snapshot</strong></a></li>
+          <li><a href="#profile" data-toggle="tab"><strong>Profile</strong></a></li>
+          <li><a href="#rotations" data-toggle="tab"><strong>Current Experiences</strong></a></li>
+          <li><a href="#degrees" data-toggle="tab"><strong>Phone Numbers</strong></a></li>
+          <li><a href="#map" data-toggle="tab"><strong>Map</strong></a></li>
+        </ul>
+        
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="snapshot">
+<div class="panel-body">
           
           <div class="tinystat mr20">
             <div id="sparkline" class="chart mt5"><canvas width="44" height="30" style="display: inline-block; width: 44px; height: 30px; vertical-align: top;"></canvas></div>
             <div class="datainfo">
               <span class="text-muted">Total Trainees</span>
-              <h4>1,205</h4>
+              <h4>$630,201</h4>
             </div>
           </div><!-- tinystat -->
               
@@ -305,27 +346,29 @@ NULL
             <div id="sparkline2" class="chart mt5"><canvas width="50" height="33" style="display: inline-block; width: 50px; height: 33px; vertical-align: top;"></canvas></div>
             <div class="datainfo">
               <span class="text-muted">Total Experiences</span>
-              <h4>501</h4>
+              <h4>$106,850</h4>
             </div>
           </div><!-- tinystat -->
-
+              
+          <div class="tinystat mr20">
+            <div id="sparkline3" class="chart mt5"><canvas width="33" height="33" style="display: inline-block; width: 33px; height: 33px; vertical-align: top;"></canvas></div>
+            <div class="datainfo">
+              <span class="text-muted">Total Partners</span>
+              <h4>23,001,090</h4>
+            </div>
+          </div><!-- tinystat -->
+          
+          <div class="tinystat">
+            <div id="sparkline4" class="chart mt5"><canvas width="50" height="33" style="display: inline-block; width: 50px; height: 33px; vertical-align: top;"></canvas></div>
+            <div class="datainfo">
+              <span class="text-muted">Total Populations</span>
+              <h4>$11,090</h4>
+            </div>
+          </div><!-- tinystat -->
               
         </div>
-            <div class="mb5"></div>
-
-          </div><!-- profile-header -->
-          
-          <!-- Nav tabs -->
-        <ul class="nav nav-tabs nav-dark">
-          <li class="active"><a href="#profile" data-toggle="tab"><strong>Profile</strong></a></li>
-          <li><a href="#rotations" data-toggle="tab"><strong>Current Experiences</strong></a></li>
-          <li><a href="#degrees" data-toggle="tab"><strong>Address/Phone</strong></a></li>
-          <li><a href="#map" data-toggle="tab"><strong>Map</strong></a></li>
-        </ul>
-        
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="profile">
+          </div>
+          <div class="tab-pane" id="profile">
             <!-- activity-list -->
 <!-- form goes here -->
 <form class="form-horizontal form-bordered" id="addSite" method="Post">
@@ -340,6 +383,8 @@ NULL
               <div class="reqd">
                 <label class="col-sm-2 control-label">Status <span class="asterisk">*</span></label>
                 <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">
                   <div class="rdio rdio-primary">
                     <input type="radio" name="status" value="1" id="statusActive" checked="checked">
                     <label for="statusActive">Active</label>
@@ -348,6 +393,19 @@ NULL
                     <input type="radio" name="status" value="0" id="statusInActive" disabled>
                     <label for="statusInActive">Inactive</label>
                   </div>
+              	</cfcase>
+                <cfcase value="View">
+                	<cfswitch expression='#viewSite.Status#'>
+                    	<cfcase value="0">
+                		<label class="text-primary alignleft">Inactive</label>
+                        </cfcase>
+                    	<cfcase value="1">
+                		<label class="text-primary alignleft">Active</label>
+                        </cfcase>
+                   </cfswitch>                        
+                </cfcase>
+            </cfswitch>                
+                
                 </div>
               </div>
           </div>
@@ -355,7 +413,15 @@ NULL
               <div class="reqd">
                 <label class="col-sm-2 control-label">Site Name <span class="asterisk">*</span></label>
                 <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">                
                   <input type="text" placeholder="Enter Site Name" class="form-control" name="SiteName" required>
+              	</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.SiteName#</cfoutput></label>
+                </cfcase>
+            </cfswitch>                
+                
                 </div>
               </div>
           </div>
@@ -372,42 +438,75 @@ NULL
           <div class="form-group">
             <label class="col-sm-2 control-label">Contact Person</label>
             <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
               <input type="text" placeholder="Enter Contact Person" class="form-control" name="ContactPerson">
+              	</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.ContactPerson#</cfoutput></label>
+                </cfcase>
+            </cfswitch>             
             </div>
           </div>
           <div class="form-group">
           <div class="reqd">
               <label class="col-sm-2 control-label">Office Phone <span class="asterisk">*</span></label>
                 <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">                      
                   <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                     <input type="text" placeholder="Office Number" id="OfficePhone" name="OfficePhone" class="form-control" required>
                   </div>
                   <label class="error" for="OfficePhone"></label>
-                </div>
-                
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                </cfcase>
+            </cfswitch>  
+            </div>               
           </div>
             <label class="col-sm-2 control-label">Alternate Phone</label>
             <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">               
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                 <input type="text" placeholder="Alternate Number" id="AlternatePhone" name="AlternatePhone" class="form-control">
-              </div>              
+              </div>
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                </cfcase>
+            </cfswitch>                             
             </div>
           </div>
 		<div class="form-group">
             <label class="col-sm-2 control-label">Site Email</label>
             <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                 <input type="text" placeholder="Office Email" id="SiteEmail" name="SiteEmail" class="form-control">
               </div>
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                </cfcase>
+            </cfswitch>               
             </div>
             <div class="reqd">
             <label class="col-sm-2 control-label">Site Website </label>
             <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">               
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
                 <input type="text" placeholder="Site Website Address" id="Website" name="Website" class="form-control">
               </div> 
               <span class="help-block">* Leave blank if No Website Avaliable</span>
-        
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.OfficePhone#</cfoutput></label>
+                </cfcase>
+            </cfswitch>        
             </div>
           </div>  
           </div>          
@@ -422,7 +521,8 @@ NULL
                             <h4 class="panel-title">Site Address</h4>
                           </div>
                           <div class="panel-body  panel-body-nopadding"> 
-                            
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">                             
                             <div class="form-group">
                             <div class="reqd">
                               <label class="col-sm-2 control-label">Street Address 1 <span class="asterisk">*</span></label>
@@ -475,14 +575,30 @@ NULL
                             <label class="col-sm-2 control-label">GeoCode Tag</label>
                             <div class="col-sm-4">
                               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control">
+                                <input type="text" placeholder="Geo Code" id="GeoCodeLink" name="GeoCodeLink" data-toggle="modal" data-target=".bs-example-modal-lg" class="form-control" onClick="google.maps.event.trigger(map, 'resize');">
                               </div>
                             </div>
                           
                           </div> 
-                                                     
+				</cfcase>
+                <cfcase value="View">
+					<div class="form-group">
+                            <label class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-4">
+								<label class="text-primary alignleft"><cfoutput>#viewSite.Address1#</cfoutput></label><br >
+                                <label class="text-primary alignleft"><cfoutput>#viewSite.Address2#</cfoutput></label><br >
+                                <label class="text-primary alignleft"><cfoutput>#viewSite.City#</cfoutput></label><br >
+                                <label class="text-primary alignleft"><cfoutput>#viewSite.State#</cfoutput></label><br >
+                                <label class="text-primary alignleft"><cfoutput>#viewSite.Country#</cfoutput></label><br >
+                                <label class="text-primary alignleft"><cfoutput>#viewSite.Zip#</cfoutput></label>
+                            </div>
+                          
+                          </div>                
+                </cfcase>
+            </cfswitch>                                                      
                           </div>
       </div>
+      
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">Site Characteristics</h4>
@@ -492,19 +608,28 @@ NULL
           <div class="reqd">
             <label class="col-sm-2 control-label">Site Type <span class="asterisk">*</span></label>
             <div class="col-sm-4">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
               <select class="form-control" data-placeholder="Choose a Site Type..." name="SiteType" required>
                   <option value="">Choose a Site Type...</option>
                 <cfoutput query="rSiteTypes">
                    <option value="#ID#">#SiteType#</option>
                 </cfoutput>
               </select>
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.SiteType#</cfoutput></label>
+                </cfcase>
+            </cfswitch>               
             </div>
             </div>
 		</div>
           <div class="form-group">  
           <div class="reqd" >      
             <label class="col-sm-2 control-label">Site's Partners/Consortia <span class="asterisk">*</span></label>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
               <select class="form-control chosen-select" multiple data-placeholder="Choose Site's Partners/Consortia..." name="SitePartners" required>
                 <option value=""></option>
                 <cfoutput query="rPartners">
@@ -512,6 +637,13 @@ NULL
                 </cfoutput>
               </select>
               <label class="error" for="SitePartners"></label>
+				</cfcase>
+                <cfcase value="View">
+                	<cfloop query="viewSitePartners">
+                    	<cfoutput><label class="text-primary alignleft">#viewSitePartners.CurrentRow#. #viewSitePartners.Partner#</label><br /></cfoutput>
+                    </cfloop>
+                </cfcase>
+            </cfswitch>               
             </div>
           </div>
           </div>
@@ -519,7 +651,9 @@ NULL
           <div class="form-group">
           <div class="reqd">
             <label class="col-sm-2 control-label">Vunerable Populations Served <span class="asterisk">*</span></label>
-            <div class="col-sm-6">
+            <div class="col-sm-10">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
               <select class="form-control chosen-select" multiple data-placeholder="Choose Vunerable Populations Served..." name="SitePopulations" required>
                 <option value=""></option>
                 <cfoutput query="rPopulations">
@@ -527,6 +661,13 @@ NULL
                 </cfoutput>
               </select>
               <label class="error" for="SitePopulations"></label>
+				</cfcase>
+                <cfcase value="View" >
+                	<cfloop query="viewSitePopulations">
+                    	<cfoutput><label class="text-primary alignleft">#viewSitePopulations.CurrentRow#. #viewSitePopulations.Population#</label><br /></cfoutput>
+                    </cfloop>
+                </cfcase>
+            </cfswitch>               
             </div>
           </div>
            </div>         
@@ -542,7 +683,14 @@ NULL
           <div class="form-group">
             <label class="col-sm-2 control-label">Notes </label>
             <div class="col-sm-10">
+                <cfswitch expression='#mode#'>
+        		<cfcase value="Edit">             
 				<textarea class="form-control" name="notes" rows="3"></textarea>
+				</cfcase>
+                <cfcase value="View">
+                <label class="text-primary alignleft"><cfoutput>#viewSite.Notes#</cfoutput></label>
+                </cfcase>
+            </cfswitch>                 
             </div>
 		</div>
                     
@@ -727,6 +875,7 @@ NULL
               <button class="btn btn-primary ">Submit</button>
               &nbsp;
               <button class="btn btn-default" type="reset">Reset</button>
+              
             </div>
           </div>
       </div>
@@ -753,49 +902,9 @@ NULL
             </div><!--follower-list -->
             
           </div>
-			<div class="tab-pane" id="degrees">
-            
-            <div class="follower-list">
-              
-
-              <div class="media">
-                <div class="media-body">
-	<div class="col-md-12">
-          <div class="table-responsive">
-          <table class="table mb30">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Anticipated</th>
-                <th>Date</th>
-                <th>Actual</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <cfloop query="viewDegrees">
-              <tr>
-                <td><cfoutput>#ID#</cfoutput></td>
-                <td><cfoutput>#anticdegree#</cfoutput></td>
-                <td><cfoutput><cfif IsDate(#anticdate#)>#DatePart("m",anticdate)#-#DatePart("d",anticdate)#-#DatePart("yyyy",anticdate)#</cfif></cfoutput></td>
-                <td><cfoutput>#actualdegree#</cfoutput></td>
-                <td class="table-action">
-                  <a href=""><i class="fa fa-pencil"></i></a>
-                </td>
-              </tr>
-              </cfloop>
-            </tbody>
-          </table>
-          </div><!-- table-responsive -->
-        </div>
-                </div>
-              </div><!-- media -->
-
-              
-            </div><!--follower-list -->
-            
-          </div>
-        </div><!-- tab-content -->
+			<div class="tab-pane" id="map">
+    			<div id="gmap-marker" style="height: 300px"></div>        
+	        </div><!-- tab-content -->
           
         </div><!-- col-sm-9 -->
       </div><!-- row -->
@@ -828,6 +937,9 @@ NULL
 <script src="../../js/jquery.validate.min.js"></script>
 <script src="../../js/jquery.maskedinput.min.js"></script>
 <script src="../../js/jquery.gritter.min.js"></script>
+
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="../../js/gmaps.js"></script>
 
 <script src="../../js/custom.js"></script>
 
@@ -886,6 +998,32 @@ $.validator.setDefaults({ ignore: ":hidden:not(select)"})
 	
     });
 </script>
+<script>
+    jQuery(document).ready(function(){
+        
+        new GMaps({
+            div: '#gmap',
+            lat: -12.043333,
+            lng: -77.028333
+        });
+        
+        var map_marker = new GMaps({
+            div: '#gmap-marker',
+            lat: -12.043333,
+            lng: -77.028333
+        });
+        
+        map_marker.addMarker({
+            lat: -12.043333,
+            lng: -77.028333,
+            click: function(e) {
+              alert('You clicked in this marker');
+            }
+        });
+
+        
+    });
+</script>
 
 <cfif IsDefined("Session.NewSiteAdded") AND #Session.NewSiteAdded# EQ "Yes">
 	<cfset Session.NewSiteAdded="No">
@@ -893,7 +1031,7 @@ $.validator.setDefaults({ ignore: ":hidden:not(select)"})
     <script>
     jQuery(document).ready(function() {
 	 jQuery.gritter.add({
-		title: 'New Site Added',
+		title: 'New Trainee Added',
 		text: 'Site record <cfoutput>#Session.SiteID#</cfoutput> was successfully added',
       class_name: 'growl-primary',
       image: '../../images/screen.png',

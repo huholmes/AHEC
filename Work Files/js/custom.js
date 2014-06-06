@@ -72,13 +72,13 @@ jQuery(document).ready(function() {
    jQuery('.toggle-chat1').toggles({on: false});
    
    // Sparkline
-   jQuery('#sidebar-chart').sparkline([4,3,3,1,4,3,2,2,3,10,9,6], {
+   jQuery('#sidebar-chart').sparkline([0,0,0,0,0,0,0,0,0,0,0,0], {
 	  type: 'bar', 
 	  height:'30px',
       barColor: '#428BCA'
    });
    
-   jQuery('#sidebar-chart2').sparkline([1,3,4,5,4,10,8,5,7,6,9,3], {
+   jQuery('#sidebar-chart2').sparkline([0,0,0,0,0,0,0,0,0,0,0,0], {
 	  type: 'bar', 
 	  height:'30px',
       barColor: '#D9534F'

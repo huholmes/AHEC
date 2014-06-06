@@ -79,10 +79,10 @@
 <file name="bootstrap-timepicker.min.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
 <file name="bootstrap-wysihtml5.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
 <file name="bootstrap.min.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
-<file name="chosen.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
+<file name="chosen.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130463454429310094" remote="130463454420000000" Dst="0" />
 <file name="colorpicker.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
 <file name="dropzone.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
-<file name="font-awesome.min.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130457880930539863" remote="130457880930000000" Dst="0" />
+<file name="font-awesome.min.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130464405841942056" remote="130464405840000000" Dst="0" />
 <file name="fullcalendar.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
 <file name="jquery-jvectormap-1.2.2.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
 <file name="jquery-ui-1.10.3.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585050000000" remote="130452585050000000" Dst="0" />
@@ -92,8 +92,9 @@
 <file name="lato.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
 <file name="morris.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
 <file name="prettyPhoto.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
-<file name="style.default.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130463066272163143" remote="130463066270000000" Dst="0" />
+<file name="style.default.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130464411853393559" remote="130464411850000000" Dst="0" />
 <file name="style.inverse.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
 <file name="toggles.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
 <file name="_div style=.html" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585060000000" remote="130452585060000000" Dst="0" />
+<file name="font.helvetica-neue.css" server="C:/ColdFusion11/cfusion/wwwroot/" local="130464391551065218" remote="130464391550000000" Dst="0" />
 </dwsync>

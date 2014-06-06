@@ -51,7 +51,7 @@
     
 </div>
 <!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue-grad">
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark red-grad">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
     <p>The University of Arizona</p>
   </a>

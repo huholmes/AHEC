@@ -90,7 +90,7 @@ Build links with navigation and permissions matrix
                             <!--Set up icon-->
                             <i class="<cfoutput>#icon#</cfoutput>"></i> 
                                 <!--Set up span with name-->
-                                <span class="gold-letters"><cfoutput>#navTitle#</cfoutput></span>
+                                <span><cfoutput>#navTitle#</cfoutput></span>
                         </a>
                      </li>
                 <cfelse>
@@ -125,7 +125,7 @@ Build links with navigation and permissions matrix
                             <!--Set up icon-->
                             <i class="<cfoutput>#icon#</cfoutput>"></i> 
                                 <!--Set up span with name-->
-                                <span class="gold-letters"><cfoutput>#navTitle#</cfoutput></span>
+                                <span><cfoutput>#navTitle#</cfoutput></span>
                         </a>
                      <!--Set up Children Levels-->
                          <ul class="children" <cfoutput>#classUL#</cfoutput>>
