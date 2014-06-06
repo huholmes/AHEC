@@ -8,7 +8,7 @@
     <cffunction name="checkUser" access="remote"> 
 		<cfif IsDefined("Session.UserID")> 
         <cfelse>
-            <cflocation url="../signin.cfm" addtoken="NO"> 
+            <cflocation url="/signin.cfm" addtoken="NO"> 
             <cfabort> 
          </cfif>   
     </cffunction>

@@ -1,5 +1,6 @@
 <cfset pageName = listFirst(listLast(CGI.ScriptName, '/'), '?')>
 <cfinclude template="../../connection/connection.cfc">
+<cfoutput>#checkuser()#</cfoutput>
 <!--Check if User has been authenticated-->
 <!--Check if User want to log off-->
 <cfif StructKeyExists(url,'logoff')>
