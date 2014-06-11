@@ -98,38 +98,38 @@
 <file name="user.png" server="C:/ColdFusion11/cfusion/wwwroot/AZAHEC/" local="130349260240000000" remote="130349260240000000" Dst="0" />
 <file name="screen.png" server="C:/ColdFusion11/cfusion/wwwroot/AZAHEC/" local="130449561842827008" remote="130449561840000000" Dst="0" />
 <file name="screen.png" server="C:/inetpub/wwwroot/AZAHECAdmin/" local="130452585310000000" remote="130452585310000000" Dst="0" />
-<file name="AMLogo.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130405028170000000" remote="130405028170000000" Dst="0" />
-<file name="AZAHEC Admin.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130413001040000000" remote="130413001040000000" Dst="0" />
-<file name="azahec-bannerlogo.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130412974630000000" remote="130412974630000000" Dst="0" />
-<file name="AZAHEC.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130412981750000000" remote="130412981750000000" Dst="0" />
-<file name="AZAHECADMIN.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130413147290000000" remote="130413147290000000" Dst="0" />
-<file name="azahecadminbeta2.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130417267960000000" remote="130417267960000000" Dst="0" />
-<file name="calendar-arrow.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260060000000" remote="130349260060000000" Dst="0" />
-<file name="chosen-sprite.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260070000000" remote="130349260070000000" Dst="0" />
-<file name="close-white.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260080000000" remote="130349260080000000" Dst="0" />
-<file name="dropdown-arrow.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260090000000" remote="130349260090000000" Dst="0" />
-<file name="favicon.ico" server="C:/ColdFusion11/cfusion/wwwroot/" local="130413005860000000" remote="130413005860000000" Dst="0" />
-<file name="favicon.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260100000000" remote="130349260100000000" Dst="0" />
-<file name="icon-search.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260110000000" remote="130349260110000000" Dst="0" />
-<file name="is-document.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260120000000" remote="130349260120000000" Dst="0" />
-<file name="is-money.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260120000000" remote="130349260120000000" Dst="0" />
-<file name="is-user.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260130000000" remote="130349260130000000" Dst="0" />
-<file name="locked.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260130000000" remote="130349260130000000" Dst="0" />
-<file name="minus.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260150000000" remote="130349260150000000" Dst="0" />
-<file name="plus-white.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260160000000" remote="130349260160000000" Dst="0" />
-<file name="plus.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260170000000" remote="130349260170000000" Dst="0" />
-<file name="profilr.jpg" server="C:/ColdFusion11/cfusion/wwwroot/" local="130441418706813368" remote="130441418700000000" Dst="0" />
-<file name="screen.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130449561842827008" remote="130449561840000000" Dst="0" />
-<file name="sort_asc.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260180000000" remote="130349260180000000" Dst="0" />
-<file name="sort_asc_disabled.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260190000000" remote="130349260190000000" Dst="0" />
-<file name="sort_both.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260190000000" remote="130349260190000000" Dst="0" />
-<file name="sort_desc.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260200000000" remote="130349260200000000" Dst="0" />
-<file name="sort_desc_disabled.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260200000000" remote="130349260200000000" Dst="0" />
-<file name="spritemap.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260210000000" remote="130349260210000000" Dst="0" />
-<file name="spritemap@2x.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260220000000" remote="130349260220000000" Dst="0" />
-<file name="themeforest.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260220000000" remote="130349260220000000" Dst="0" />
-<file name="uploadfile.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260230000000" remote="130349260230000000" Dst="0" />
-<file name="user.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130349260240000000" remote="130349260240000000" Dst="0" />
+<file name="AMLogo.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="AZAHEC Admin.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="azahec-bannerlogo.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="AZAHEC.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="AZAHECADMIN.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="azahecadminbeta2.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="calendar-arrow.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="chosen-sprite.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="close-white.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585150000000" remote="130452585150000000" Dst="0" />
+<file name="dropdown-arrow.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585210000000" remote="130452585210000000" Dst="0" />
+<file name="favicon.ico" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585210000000" remote="130452585210000000" Dst="0" />
+<file name="favicon.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585210000000" remote="130452585210000000" Dst="0" />
+<file name="icon-search.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585220000000" remote="130452585220000000" Dst="0" />
+<file name="is-document.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585220000000" remote="130452585220000000" Dst="0" />
+<file name="is-money.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585220000000" remote="130452585220000000" Dst="0" />
+<file name="is-user.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585220000000" remote="130452585220000000" Dst="0" />
+<file name="locked.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585240000000" remote="130452585240000000" Dst="0" />
+<file name="minus.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585240000000" remote="130452585240000000" Dst="0" />
+<file name="plus-white.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585270000000" remote="130452585270000000" Dst="0" />
+<file name="plus.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585270000000" remote="130452585270000000" Dst="0" />
+<file name="profilr.jpg" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="screen.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="sort_asc.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="sort_asc_disabled.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="sort_both.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="sort_desc.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="sort_desc_disabled.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="spritemap.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="spritemap@2x.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="themeforest.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="uploadfile.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="user.png" server="C:/ColdFusion11/cfusion/wwwroot/" local="130452585310000000" remote="130452585310000000" Dst="0" />
 <file name="AMLogo.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585150000000" remote="130452585150000000" Dst="0" />
 <file name="AZAHEC Admin.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585150000000" remote="130452585150000000" Dst="0" />
 <file name="azahec-bannerlogo.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585150000000" remote="130452585150000000" Dst="0" />
@@ -162,4 +162,6 @@
 <file name="themeforest.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585310000000" remote="130452585310000000" Dst="0" />
 <file name="uploadfile.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585310000000" remote="130452585310000000" Dst="0" />
 <file name="user.png" server="C:/Users/asharnb/Documents/GitHub/AHEC/Work Files/" local="130452585310000000" remote="130452585310000000" Dst="0" />
+<file name="bg-sidebar.gif" server="C:/ColdFusion11/cfusion/wwwroot/" local="130467198102262690" remote="130467198100000000" Dst="0" />
+<file name="bg-sidebar.gif" server="C:/inetpub/wwwroot/AZAHECAdmin/" local="130467198102262690" remote="130467198100000000" Dst="0" />
 </dwsync>

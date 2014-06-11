@@ -8,20 +8,35 @@
   <cflocation url="../signin.cfm" addtoken="NO" >
 </cfif>
 <!--Set up Page Variables for Header include-->
-	<cfset This.PageName = 'View Field Experience Sites'>
+	<cfset This.PageName = 'Field Experience Sites'>
     <cfset This.Icon = 'fa fa-building-o'>
 <!--Set up Page Variables for Navigation include-->    
     <cfset This.CurrentLevel = '1'>
     <cfset This.HostName = '#cgi.script_name#'>
     <cfset This.ActiveFolder = 'hp'>
 <!--Database Calls-->
-    <cfquery name="rSites" datasource="#datasource2#">
-        SELECT S.ID, S.Status, S.SiteName, S.ContactPerson, SP.OfficePhone, SP.AlternatePhone, S.SiteEmail, S.Website, SA.Address1, SA.Address2, SA.City, SA.County, SA.State, SA.Country, SA.ZIP, S.GeocodeLink,S.Center, S.SiteType, S.Notes, S.CreatedBy, S.DateCreated, S.LastEditedBy, S.DateUpdated
-		FROM Sites S  
-        LEFT JOIN dbo.Phones SP ON SP.TypeID = S.ID
-        LEFT JOIN dbo.Addresses SA ON SA.TypeID = S.ID
+    <cfquery name="rSitesTotal" datasource="#datasource2#">
+        SELECT COUNT(*) as Total  
+        FROM Sites 
     </cfquery>
     
+     <cfquery name="rSitesAT" datasource="#datasource2#" maxrows="5">
+        SELECT COUNT(*) as Total  
+        FROM Sites 
+        WHERE (Cast(DateCreated as DATE) = Cast(GETDATE() as DATE))
+    </cfquery>  
+    
+     <cfquery name="rSitesActive" datasource="#datasource2#" maxrows="5">
+        SELECT COUNT(*) as Total  
+        FROM Sites 
+        WHERE Status='1'
+    </cfquery>  
+    
+     <cfquery name="rSitesExp" datasource="#datasource2#" maxrows="5">
+        SELECT S.ID, S.SiteName, S.DateCreated
+		FROM Sites S
+        ORDER BY S.DateCreated DESC
+    </cfquery>             
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,16 +45,19 @@
   <meta name="description" content="">
   <meta name="author" content="Ashar Babar Concepts">
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
+  
 
   <title>AZAHEC Admin - Health Profession Students</title>
 
   <link href="../css/style.default.css" rel="stylesheet">
   <link href="../css/jquery.datatables.css" rel="stylesheet">
+  <link href="../css/morris.css" rel="stylesheet"> 
+  <link id="fontswitch" rel="stylesheet" href="/css/font.helvetica-neue.css">
   <link rel="stylesheet" type="text/css" href="http://redbar.arizona.edu/sites/default/files/ua-banner/ua-web-branding/css/ua-web-branding.css">	
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="js/html5shiv.js"></script>
-  <script src="js/respond.min.js"></script>
+  <script src="/js/html5shiv.js"></script>
+  <script src="/js/respond.min.js"></script>
   <![endif]-->
 
 </head>
@@ -53,8 +71,8 @@
     </div>
     
 </div>
-<!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark blue-grad">
+
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgLight dark-gray-grad twenty-five">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
     <p>The University of Arizona</p>
   </a>
@@ -73,45 +91,91 @@
     <!-- header -->     
     
     <div class="contentpanel">
-      <div class="row">
-            <div class="panel panel-dark">
-                <div class="panel-heading">
-                    <ul class="pagination nomargin pull-right">
-                        <a href="ae/aSite.cfm" class="btn btn-primary">Add Site</a>
-                            <button id="chatview" class="btn btn-primary">
-                				<i class="fa fa-search"></i>
-            				</button>
-                    </ul>
-                    <h4 class="panel-title">Showing All Sites</h4>
-                    <p><cfoutput>#rSites.RecordCount#</cfoutput> result</p>
-                </div><!-- panel-heading -->
+    <div class="row">
+                        
+                        <!-- col-md-6 -->
+                        <div class="col-md-8 mb30">
+                          <div id="bar-chart" style="height: 300px; position: relative;"></div>
+                        </div><!-- col-md-6 -->
+                    
+                    
+                        <div class="col-md-4 mb30">
+                          <div class="quikstat">
+                          <ul>
+                          <li>
+                          	<div class="left">
+                            	<span class="text-muted"><cfoutput>#rSitesTotal.Total#</cfoutput></span>
+                          	</div>
+                          	<div class="right">
+                            	<span class="text-info">Total Sites</span>
+                          	</div>                            
+                          </li>                          
+                          <li>
+                          	<div class="left">
+                            	<span class="text-muted"><cfoutput>#rSitesAT.Total#</cfoutput></span>
+                          	</div>
+                          	<div class="right">
+                            	<span class="text-info">Added Today</span>
+                          	</div>                            
+                          </li>
+                          <li>
+                          	<div class="left">
+                            	<span class="text-muted"><cfoutput>#rSitesActive.Total#</cfoutput></span>
+                          	</div>
+                          	<div class="right">
+                            	<span class="text-info">Active Sites</span>
+                          	</div>                            
+                          </li>
+                          <li>
+                          	<div class="left">
+                            	<span class="text-muted">00</span>
+                          	</div>
+                          	<div class="right">
+                            	<span class="text-info">Current Experience</span>
+                          	</div>                            
+                          </li>                                                    
+                          </ul>
+                       
+                          </div>
+                        </div><!-- col-md-6 -->
+                    </div>                    
+      <div class="panel"><!-- panel-heading-->
+                        <div class="panel-body">
+                            <div class="btn-group mr10">
+                                <a class="btn btn-primary" href="ae/aSite.cfm"><i class="fa fa-plus mr5"></i> Add New Site</a>
+                                <button id="chatview" class="btn btn-primary" type="button"><i class="fa fa-search mr5"></i> Advanced Search</button>
+                            </div>
+
+                            
+                            <div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
+                                    <i class="fa fa-arrow-circle-o-down mr5"></i> Report
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Excel</a></li>
+                                </ul>
+                            </div>
+                            
+                            <br><br>
+                            
+<div class="row">
+            <div class="panel">
                 <div class="panel-body">
 
  			<div class="table-responsive">
           <table class="table" id="table2">
               <thead>
                  <tr>
-                    <th>ID</th>
-                    <th>Site Name</th>
-                    <th>Status</th>
-                    <th>City</th>
-                    <th>Website</th>
-                    <th>Actions</th>
+                    <th width="9%">ID</th>
+                    <th width="35%">Site Name</th>
+                    <th width="10%">Status</th>
+                    <th width="21%">City</th>
+                    <th width="15%">Website</th>
+                    <th width="10%"></th>
                  </tr>
               </thead>
-              <tbody>
-               <cfloop query="rSites">
-                 <tr>
-                    <td><a href="ae/vTrainee.cfm?id=<cfoutput>#ID#</cfoutput>"><cfoutput>#int(ID)#</cfoutput></a></td>
-                    <td><cfoutput>#SiteName#</cfoutput></td>
-                    <td><cfoutput>#Status#</cfoutput></td>
-                    <td><cfoutput>#City#</cfoutput></td>
-                    <td><a href="<cfoutput>#website#</cfoutput>" target="_blank"><cfoutput>Visit</cfoutput></a></td>
-                    <td><i class="fa fa-eye"></i>  <a href="ae/vSite.cfm?id=<cfoutput>#ID#</cfoutput>"><i class="fa fa-pencil"></i></a>  <i class="fa fa-trash-o"></i></td>
-                 </tr>
-				</cfloop>
-
-              </tbody>
+			<tbody></tbody>
            </table>
                      </div>         
         
@@ -119,6 +183,9 @@
                           
                 </div><!-- panel-body -->
             </div>
+                            
+                        </div><!-- panel-body -->
+                    </div>
     </div><!-- contentpanel -->
     
   </div><!-- mainpanel -->
@@ -237,7 +304,8 @@
 <script src="../js/toggles.min.js"></script>
 <script src="../js/retina.min.js"></script>
 <script src="../js/jquery.cookies.js"></script>
-
+<script src="../js/morris.min.js"></script>
+<script src="../js/raphael-2.1.0.min.js"></script>
 <script src="../js/jquery.datatables.min.js"></script>
 
 <script src="../js/jquery-ui-1.10.3.min.js"></script>
@@ -246,24 +314,88 @@
 <script src="../js/custom.js"></script>
 <script>
     jQuery(document).ready(function() {
-        
-        // Chosen Select
-        jQuery(".chosen-select").chosen({'width':'100%','white-space':'nowrap'});
+    
+  new Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'bar-chart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+            { y: '2006', a: 30, b: 35 },
+            { y: '2007', a: 75,  b: 80 },
+            { y: '2008', a: 50,  b: 65 },
+            { y: '2009', a: 30,  b: 65 },
+            { y: '2010', a: 40,  b: 95 },
+            { y: '2011', a: 66,  b: 101 },
+            { y: '2012', a: 120, b: 50 }
+        ],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['Trainees', 'Experiences'],
+        lineColors: ['#D9534F', '#428BCA'],
+        lineWidth: '2px',
+        hideHover: true
+    });
+		
         
     });
 </script>
 <script>
-  jQuery(document).ready(function() {
-    
-    
-    jQuery('#table2').dataTable({
-      "sPaginationType": "full_numbers"
-    });
-    
+$(document).ready(function() {
+var userTable = $('#table2').dataTable({
+  "sAjaxSource": "sources/dsSites.cfc?method=GetSites",
+  "sPaginationType": "full_numbers",
+  "aoColumns": [
+    { "mDataProp": "ID" , "sTitle": "ID"},
+    { "mDataProp": "SITENAME" , "sTitle": "Site Name"},
+    { "mDataProp": "STATUS" , "sTitle": "Status",
+	"mRender" : function (data, type, row) {
+	        if (data == 1) {
+            sReturn = 'Active';
+            return sReturn;
+        }
+        else {
+            sReturn = 'Inactive';
+            return sReturn;
+        }
+	},
+	
+	},
+    { "mDataProp": "CITY" , "sTitle": "City"},
+	{ "mDataProp": "WEBSITE" , "sTitle": "Website",
+    "mRender" : function (data, type, row) {
+	        if (data == 'No Website Avaliable') {
+            sReturn = 'N/A';
+            return sReturn;
+        }
+        else {
+            sReturn = '<a href="'+data+'">Visit Website</a>';
+            return sReturn;
+        }
+	}	
+	},
+	{ "mData": "ID" , //its null here because history column will contain the mRender
+    "mRender" : function (data, type, row) {
+	return '<a href="ae/vSite.cfm?id='+data+'"><i class="fa fa-pencil"></i></a>';
+	} }	
 
+  ]
   
+});
+
+
+    
+    jQuery("select").chosen({
+      'min-width': '100px',
+      'white-space': 'nowrap',
+      disable_search_threshold: 10
+    });
+	
+  // Chosen Select
+        jQuery(".chosen-select").chosen({'width':'100%','white-space':'nowrap'});
   
   });
 </script>
+
 </body>
 </html>

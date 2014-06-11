@@ -543,9 +543,9 @@ h4, .h4 {
 }
 
 .nav-pills > li > a {
-   -moz-border-radius: 3px;
-   -webkit-border-radius: 3px;
-   border-radius: 3px;
+   -moz-border-radius: 0px;
+   -webkit-border-radius: 0px;
+   border-radius: 0px;
 }
 
 .nav-tabs > li > a {
