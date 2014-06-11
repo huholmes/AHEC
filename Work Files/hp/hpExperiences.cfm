@@ -8,30 +8,19 @@
   <cflocation url="../signin.cfm" addtoken="NO" >
 </cfif>
 <!--Set up Page Variables for Header include-->
-	<cfset This.PageName = 'Health Profession Trainees'>
-    <cfset This.Icon = 'fa fa-group'>
+	<cfset This.PageName = 'Field Experiences'>
+    <cfset This.Icon = 'fa fa-medkit'>
 <!--Set up Page Variables for Navigation include-->    
     <cfset This.CurrentLevel = '1'>
     <cfset This.HostName = '#cgi.script_name#'>
     <cfset This.ActiveFolder = 'hp'>
 <!--Database Calls-->
- 
-     <cfquery name="rTraineesAT" datasource="#datasource2#" maxrows="5">
+    <cfquery name="rInsTotal" datasource="#datasource2#">
         SELECT COUNT(*) as Total  
-        FROM Trainees 
-        WHERE (Cast(DateCreated as DATE) = Cast(GETDATE() as DATE))
-    </cfquery>  
-    
-     <cfquery name="rTraineesTotal" datasource="#datasource2#" maxrows="5">
-        SELECT COUNT(*) as Total  
-        FROM Trainees 
-    </cfquery>  
-    
-     <cfquery name="rSitesExp" datasource="#datasource2#" maxrows="5">
-        SELECT S.ID, S.SiteName, S.DateCreated
-		FROM Sites S
-        ORDER BY S.DateCreated DESC
-    </cfquery>             
+        FROM Institutions 
+    </cfquery>
+
+          
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +31,7 @@
   <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
   
 
-  <title>AZAHEC Admin - Health Profession Trainees</title>
+  <title>AZAHEC Admin - Institutions</title>
 
   <link href="../css/style.default.css" rel="stylesheet">
   <link href="../css/jquery.datatables.css" rel="stylesheet">
@@ -69,7 +58,7 @@
 
 <div id="ua-web-branding-banner-v1" class="ua-wrapper bgLight dark-gray-grad twenty-five">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
-    <p>The University of Arizona</p>
+  <p>The University of Arizona</p>
   </a>
 </div>
 
@@ -89,13 +78,9 @@
     <div class="row">
                         
                         <!-- col-md-6 -->
-                        <div class="col-md-5 mb30">
-                          <div id="bar-chart" style="height: 300px;"></div>
+                        <div class="col-md-8 mb30">
+                          <div id="bar-chart" style="height: 300px; position: relative;"></div>
                         </div><!-- col-md-6 -->
-                        <div class="col-md-3 mb30">
-                          <div id="donut-chart2" style="height: 300px;"></div>
-                        </div><!-- col-md-6 -->
-                    
                     
                     
                         <div class="col-md-4 mb30">
@@ -103,46 +88,45 @@
                           <ul>
                           <li>
                           	<div class="left">
-                            	<span class="text-muted"><cfoutput>#rTraineesTotal.Total#</cfoutput></span>
+                            	<span class="text-primary"><cfoutput>#rInsTotal.Total#</cfoutput></span>
                           	</div>
                           	<div class="right">
-                            	<span class="text-info">Total Trainees</span>
+                            	<span class="text-muted">Total Experiences</span>
                           	</div>                            
                           </li>                          
                           <li>
                           	<div class="left">
-                            	<span class="text-muted"><cfoutput>#rTraineesAT.Total#</cfoutput></span>
+                            	<span class="text-info">00</span>
                           	</div>
                           	<div class="right">
-                            	<span class="text-info">Added Today</span>
+                            	<span class="text-muted">Added Today</span>
                           	</div>                            
                           </li>
                           <li>
                           	<div class="left">
-                            	<span class="text-muted">00</span>
+                            	<span class="text-info">00</span>
                           	</div>
                           	<div class="right">
-                            	<span class="text-info">Active Experience</span>
+                            	<span class="text-muted">Current Experiences</span>
                           	</div>                            
                           </li>
                           <li>
                           	<div class="left">
-                            	<span class="text-muted">00</span>
+                            	<span class="text-danger">00</span>
                           	</div>
                           	<div class="right">
-                            	<span class="text-info">Current Experience</span>
+                            	<span class="text-muted">Ending Soon</span>
                           	</div>                            
-                          </li>                                                    
+                          </li>                                                                            
                           </ul>
                        
                           </div>
                         </div><!-- col-md-6 -->
-                    </div>
-                                       
+                    </div>                    
       <div class="panel"><!-- panel-heading-->
                         <div class="panel-body">
                             <div class="btn-group mr10">
-                                <a class="btn btn-primary" href="ae/aTrainee.cfm"><i class="fa fa-plus mr5"></i> Add New Trainee</a>
+                                <a class="btn btn-primary" href="ae/aSite.cfm"><i class="fa fa-plus mr5"></i> Add New Site</a>
                                 <button id="chatview" class="btn btn-primary" type="button"><i class="fa fa-search mr5"></i> Advanced Search</button>
                             </div>
 
@@ -168,11 +152,8 @@
               <thead>
                  <tr>
                     <th width="9%">ID</th>
-                    <th width="25%">Last Namee</th>
-                    <th width="25%">First Name</th>
-                    <th width="21%">Status</th>
-                    <th width="20%">Email</th>
-                    <th width="5%"></th>
+                    <th width="81%">Institution Name</th>
+                    <th width="10%"></th>
                  </tr>
               </thead>
 			<tbody></tbody>
@@ -247,7 +228,54 @@
   
   
 </section>
-
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Advanced Search</h4>
+      </div>
+      <div class="modal-body">
+            
+            <h4 class="subtitle mb5">Name</h4>
+            <input type="text" value="Search Term" class="form-control" />
+            
+            <div class="mb20"></div>
+            
+            <h4 class="subtitle mb5">Profession</h4>
+            <select class="form-control chosen-select" data-placeholder="Choose a Profession...">
+                  <option value=""></option>
+                  <option value="United States">Doctor</option>
+                  <option value="United Kingdom">Burse</option>
+                  <option value="Afghanistan">General Practioti...</option>
+                  <option value="Aland Islands">Big Doctor</option>
+                  <option value="Albania">Small Doctor</option>
+                </select>
+            
+            <div class="mb20"></div>
+            
+            <h4 class="subtitle mb5">Region</h4>
+            <select class="form-control chosen-select" data-placeholder="Choose a Region...">
+                  <option value=""></option>
+                  <option value="SEAHEC">South East AHEC</option>
+                  <option value="GVAHEC">Greater Valley AHEC</option>
+                  <option value="NAHEC">Northern AHEC</option>
+                  <option value="EAHEC">Eastern AHEC</option>
+                  <option value="WAHEC">Western AHEC</option>
+                </select>
+            
+            <div class="mb20"></div>
+            
+            <h4 class="subtitle mb5">Email</h4>
+            <input type="text" value="Email Address" class="form-control" />
+                          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Search</button>
+      </div>
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div>
 
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/jquery-migrate-1.2.1.min.js"></script>
@@ -268,55 +296,43 @@
 <script>
     jQuery(document).ready(function() {
     
-    new Morris.Bar({
+  new Morris.Line({
         // ID of the element in which to draw the chart.
         element: 'bar-chart',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
         data: [
-            { y: '2012Q3', a: 30, b: 20 },
-            { y: '2012Q4', a: 75,  b: 65 },
-            { y: '2013Q1', a: 50,  b: 40 },
-            { y: '2013Q2', a: 75,  b: 65 },
-            { y: '2013Q3', a: 50,  b: 40 },
-            { y: '2013Q4', a: 75,  b: 65 },
-            { y: '2014Q1', a: 100, b: 90 }
+            { y: '2006', a: 30 },
+            { y: '2007', a: 75 },
+            { y: '2008', a: 50 },
+            { y: '2009', a: 30 },
+            { y: '2010', a: 40 },
+            { y: '2011', a: 66 },
+            { y: '2012', a: 120 }
         ],
         xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Male', 'Female'],
-        lineWidth: '1px',
-        fillOpacity: 0.8,
-        smooth: false,
+        ykeys: ['a'],
+        labels: ['Institutions'],
+        lineColors: ['#D9534F', '#428BCA'],
+        lineWidth: '2px',
         hideHover: true
     });
 		
-     new Morris.Donut({
-        element: 'donut-chart2',
-        data: [
-          {label: "Continuing", value: 80},
-          {label: "Graduated", value: 10},
-          {label: "Leave Of Absence", value: 5},
-          {label: "Withdrew", value: 5},
-        ],
-        colors: ['#D9534F','#1CAF9A','#428BCA','#5BC0DE']
-    });       
+        
     });
 </script>
 <script>
 $(document).ready(function() {
 var userTable = $('#table2').dataTable({
-  "sAjaxSource": "sources/dsTrainees.cfc?method=GetTrainees",
+  "sAjaxSource": "sources/dsInstitutions.cfc?method=GetIns",
   "sPaginationType": "full_numbers",
   "aoColumns": [
     { "mDataProp": "ID" , "sTitle": "ID"},
-    { "mDataProp": "LASTNAME" , "sTitle": "Last Name"},
-    { "mDataProp": "FIRSTNAME" , "sTitle": "First Name"},
-    { "mDataProp": "STATUS" , "sTitle": "Status"},
-	{ "mDataProp": "EMAILPREFERRED" , "sTitle": "Email"},
+    { "mDataProp": "INSTITUTION" , "sTitle": "Institution Name"},
+
 	{ "mData": "ID" , //its null here because history column will contain the mRender
     "mRender" : function (data, type, row) {
-	return '<a href="ae/vTrainee.cfm?id='+data+'"><i class="fa fa-pencil"></i></a>';
+	return '<a href=""><i class="fa fa-pencil"></i></a>';
 	} }	
 
   ]

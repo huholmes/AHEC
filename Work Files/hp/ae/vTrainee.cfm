@@ -31,7 +31,10 @@
 <cfif StructKeyExists(url,'id')>
       <cfset Session.TraineeID="#url.id#"> 
 <cfelse>
+	<cfif StructKeyExists(Session,'TraineeID') and #Session.TraineeID# NEQ ''> 
+<cfelse>
 	<cfset Session.TraineeID="1">    	   
+</cfif>   	   
 </cfif>
   <!--Database Call for Viewing Trainee/ After Session Trainee ID has been set-->
       <cfstoredproc procedure="dbo.viewTrainee" datasource="#datasource2#">
@@ -239,7 +242,7 @@ NULL
     <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
 </div>
 <!--UA Web Banner -->
-<div id="ua-web-branding-banner-v1" class="ua-wrapper bgDark red-grad">
+<div id="ua-web-branding-banner-v1" class="ua-wrapper bgLight dark-gray-grad twenty-five">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
     <p>The University of Arizona</p>
   </a>

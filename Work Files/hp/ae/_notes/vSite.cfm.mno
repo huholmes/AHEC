@@ -5,4 +5,7 @@
 	<infoitem key="UD_LiveData_param0" value="Session.SiteID=1&amp;Session.TraineeID=1" />
 	<infoitem key="UD_TESTVALUES_viewSite" value="name:@SiteID;testValue:1" />
 	<infoitem key="UD_LiveData_param1" value="Session.TraineeID=1" />
+	<infoitem key="UD_TESTVALUES_viewSitePartners" value="name:@SiteID;testValue:1" />
+	<infoitem key="UD_TESTVALUES_viewSitePopulations" value="name:@SiteID;testValue:1" />
+	<infoitem key="UD_Recordset1" value="name:ID;datatype:,name:status;datatype:,name:SiteName;datatype:,name:ContactPerson;datatype:,name:SiteEmail;datatype:,name:Website;datatype:,name:GeocodeLink;datatype:,name:Center;datatype:,name:SiteType;datatype:,name:FedPcHPSA;datatype:,name:FedMentHPSA;datatype:,name:FedDentHPSA;datatype:,name:FedMUA;datatype:,name:FedRural;datatype:,name:AzMUA;datatype:,name:AzRural;datatype:,name:PCoffer;datatype:,name:Notes;datatype:,name:CreatedBy;datatype:,name:LastEditedBy;datatype:,name:DateCreated;datatype:,name:DateUpdated;datatype:,name:FedPcHPSA_DV;datatype:,name:FedMentHPSA_DV;datatype:,name:FedDentHPSA_DV;datatype:,name:FedMUA_DV;datatype:,name:FedRural_DV;datatype:,name:PCoffer_DV;datatype:" />
 </info>

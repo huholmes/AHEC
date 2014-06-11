@@ -86,7 +86,7 @@
                     <input type="text" name="username" id="username" title="Your username is required" class="form-control uname" placeholder="Username" required/>
                     <input type="password" name="password" id="password" title="Your password is required" class="form-control pword" placeholder="Password" required/>
                     <a href="#"><small>Forgot Your Password?</small></a>
-                    <input type="submit" class="btn btn-success btn-block" value="Sign In" />
+                    <input type="submit" class="btn btn-primary btn-block" value="Sign In" />
                 </form>
             </div><!-- col-sm-5 -->
             

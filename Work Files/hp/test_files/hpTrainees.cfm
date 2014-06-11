@@ -1,26 +1,24 @@
-<cfinclude template="../connection/connection.cfc">
+<cfinclude template="../../connection/connection.cfc">
 <!--Check if User has been authenticated-->
 <cfset Session.RL = "#cgi.script_name#">
 <cfset User = "#checkUser()#">
 
 <cfif StructKeyExists(url,'logoff')>
   <cfset StructClear(Session)>
-  <cflocation url="../signin.cfm" addtoken="NO" >
+  <cflocation url="../../signin.cfm" addtoken="NO" >
 </cfif>
 <!--Set up Page Variables for Header include-->
-	<cfset This.PageName = 'Institutions'>
-    <cfset This.Icon = 'fa fa-institution'>
+	<cfset This.PageName = 'View Trainees'>
+    <cfset This.Icon = 'fa fa-stethoscope'>
 <!--Set up Page Variables for Navigation include-->    
     <cfset This.CurrentLevel = '1'>
     <cfset This.HostName = '#cgi.script_name#'>
     <cfset This.ActiveFolder = 'hp'>
 <!--Database Calls-->
-    <cfquery name="rInsTotal" datasource="#datasource2#">
-        SELECT COUNT(*) as Total  
-        FROM Institutions 
+    <cfquery name="rTrainees" datasource="#datasource2#" maxrows="500">
+        SELECT * FROM Trainees ORDER BY id ASC
     </cfquery>
 
-          
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,20 +26,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="Ashar Babar Concepts">
-  <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
-  
+  <link rel="shortcut icon" href="../../images/favicon.ico" type="image/png">
 
-  <title>AZAHEC Admin - Institutions</title>
+  <title>AZAHEC Admin - Health Profession Students</title>
 
-  <link href="../css/style.default.css" rel="stylesheet">
-  <link href="../css/jquery.datatables.css" rel="stylesheet">
-  <link href="../css/morris.css" rel="stylesheet"> 
-  <link id="fontswitch" rel="stylesheet" href="/css/font.helvetica-neue.css">
+  <link href="../../css/style.default.css" rel="stylesheet">
+  <link href="../../css/jquery.datatables.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://redbar.arizona.edu/sites/default/files/ua-banner/ua-web-branding/css/ua-web-branding.css">	
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
-  <script src="/js/html5shiv.js"></script>
-  <script src="/js/respond.min.js"></script>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
   <![endif]-->
 
 </head>
@@ -55,10 +50,10 @@
     </div>
     
 </div>
-
+<!--UA Web Banner -->
 <div id="ua-web-branding-banner-v1" class="ua-wrapper bgLight dark-gray-grad twenty-five">
   <a class="ua-home asdf" href="http://arizona.edu" title="The University of Arizona">
-  <p>The University of Arizona</p>
+    <p>The University of Arizona</p>
   </a>
 </div>
 
@@ -66,82 +61,54 @@
 
 <section>
   <!-- leftpanel -->
-  	<cfinclude template="../includes/leftpanel.cfm">
+  	<cfinclude template="../../includes/leftpanel.cfm">
   <!-- leftpanel -->
   
   <div class="mainpanel">
     <!-- header -->
-    <cfinclude template="../includes/header.cfm" >
+    <cfinclude template="../../includes/header.cfm" >
     <!-- header -->     
     
     <div class="contentpanel">
-    <div class="row">
-                        
-                        <!-- col-md-6 -->
-                        <div class="col-md-8 mb30">
-                          <div id="bar-chart" style="height: 300px; position: relative;"></div>
-                        </div><!-- col-md-6 -->
-                    
-                    
-                        <div class="col-md-4 mb30">
-                          <div class="quikstat">
-                          <ul>
-                          <li>
-                          	<div class="left">
-                            	<span class="text-muted"><cfoutput>#rInsTotal.Total#</cfoutput></span>
-                          	</div>
-                          	<div class="right">
-                            	<span class="text-info">Total Institutions</span>
-                          	</div>                            
-                          </li>                          
-                          <li>
-                          	<div class="left">
-                            	<span class="text-muted">00</span>
-                          	</div>
-                          	<div class="right">
-                            	<span class="text-info">Added Today</span>
-                          	</div>                            
-                          </li>
-                                                  
-                          </ul>
-                       
-                          </div>
-                        </div><!-- col-md-6 -->
-                    </div>                    
-      <div class="panel"><!-- panel-heading-->
-                        <div class="panel-body">
-                            <div class="btn-group mr10">
-                                <a class="btn btn-primary" href="ae/aSite.cfm"><i class="fa fa-plus mr5"></i> Add New Site</a>
-                                <button id="chatview" class="btn btn-primary" type="button"><i class="fa fa-search mr5"></i> Advanced Search</button>
-                            </div>
-
-                            
-                            <div class="btn-group">
-                                <button data-toggle="dropdown" class="btn btn-success dropdown-toggle" type="button">
-                                    <i class="fa fa-arrow-circle-o-down mr5"></i> Report
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Excel</a></li>
-                                </ul>
-                            </div>
-                            
-                            <br><br>
-                            
-<div class="row">
-            <div class="panel">
+      <div class="row">
+            <div class="panel panel-dark">
+                <div class="panel-heading">
+                    <ul class="pagination nomargin pull-right">
+                        <a href="../ae/aTrainee.cfm" class="btn btn-primary">Add Trainee</a>
+                            <button id="chatview" class="btn btn-primary">
+                				<i class="fa fa-search"></i>
+            				</button>
+                    </ul>
+                    <h4 class="panel-title">Showing All Trainees</h4>
+                    <p><cfoutput>#rTrainees.RecordCount#</cfoutput> result</p>
+                </div><!-- panel-heading -->
                 <div class="panel-body">
 
  			<div class="table-responsive">
           <table class="table" id="table2">
               <thead>
                  <tr>
-                    <th width="9%">ID</th>
-                    <th width="81%">Institution Name</th>
-                    <th width="10%"></th>
+                    <th>ID</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Status</th>
+                    <th>Email</th>
+                    <th>Actions</th>
                  </tr>
               </thead>
-			<tbody></tbody>
+              <tbody>
+               <cfloop query="rTrainees">
+                 <tr>
+                    <td><a href="../ae/vTrainee.cfm?id=<cfoutput>#ID#</cfoutput>"><cfoutput>#int(ID)#</cfoutput></a></td>
+                    <td><cfoutput>#lastname#</cfoutput></td>
+                    <td><cfoutput>#firstname#</cfoutput></td>
+                    <td><cfoutput>#status#</cfoutput></td>
+                    <td><cfoutput>#emailpreferred#</cfoutput></td>
+                    <td><i class="fa fa-eye"></i>  <a href="../ae/vTrainee.cfm?id=<cfoutput>#ID#</cfoutput>"><i class="fa fa-pencil"></i></a>  <i class="fa fa-trash-o"></i></td>
+                 </tr>
+				</cfloop>
+
+              </tbody>
            </table>
                      </div>         
         
@@ -149,9 +116,6 @@
                           
                 </div><!-- panel-body -->
             </div>
-                            
-                        </div><!-- panel-body -->
-                    </div>
     </div><!-- contentpanel -->
     
   </div><!-- mainpanel -->
@@ -262,81 +226,41 @@
   </div><!-- modal-dialog -->
 </div>
 
-<script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/jquery-migrate-1.2.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/modernizr.min.js"></script>
-<script src="../js/jquery.sparkline.min.js"></script>
-<script src="../js/toggles.min.js"></script>
-<script src="../js/retina.min.js"></script>
-<script src="../js/jquery.cookies.js"></script>
-<script src="../js/morris.min.js"></script>
-<script src="../js/raphael-2.1.0.min.js"></script>
-<script src="../js/jquery.datatables.min.js"></script>
+<script src="../../js/jquery-1.10.2.min.js"></script>
+<script src="../../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/modernizr.min.js"></script>
+<script src="../../js/jquery.sparkline.min.js"></script>
+<script src="../../js/toggles.min.js"></script>
+<script src="../../js/retina.min.js"></script>
+<script src="../../js/jquery.cookies.js"></script>
 
-<script src="../js/jquery-ui-1.10.3.min.js"></script>
-<script src="../js/chosen.jquery.min.js"></script>
+<script src="../../js/jquery.datatables.min.js"></script>
 
-<script src="../js/custom.js"></script>
+<script src="../../js/jquery-ui-1.10.3.min.js"></script>
+<script src="../../js/chosen.jquery.min.js"></script>
+
+<script src="../../js/custom.js"></script>
 <script>
     jQuery(document).ready(function() {
-    
-  new Morris.Line({
-        // ID of the element in which to draw the chart.
-        element: 'bar-chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [
-            { y: '2006', a: 30 },
-            { y: '2007', a: 75 },
-            { y: '2008', a: 50 },
-            { y: '2009', a: 30 },
-            { y: '2010', a: 40 },
-            { y: '2011', a: 66 },
-            { y: '2012', a: 120 }
-        ],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['Institutions'],
-        lineColors: ['#D9534F', '#428BCA'],
-        lineWidth: '2px',
-        hideHover: true
-    });
-		
+        
+        // Chosen Select
+        jQuery(".chosen-select").chosen({'width':'100%','white-space':'nowrap'});
         
     });
 </script>
 <script>
-$(document).ready(function() {
-var userTable = $('#table2').dataTable({
-  "sAjaxSource": "sources/dsInstitutions.cfc?method=GetIns",
-  "sPaginationType": "full_numbers",
-  "aoColumns": [
-    { "mDataProp": "ID" , "sTitle": "ID"},
-    { "mDataProp": "INSTITUTION" , "sTitle": "Institution Name"},
-
-	{ "mData": "ID" , //its null here because history column will contain the mRender
-    "mRender" : function (data, type, row) {
-	return '<a href=""><i class="fa fa-pencil"></i></a>';
-	} }	
-
-  ]
-  
-});
-
-
+  jQuery(document).ready(function() {
     
-    jQuery("select").chosen({
-      'min-width': '100px',
-      'white-space': 'nowrap',
-      disable_search_threshold: 10
+    
+    jQuery('#table2').dataTable({
+      "sPaginationType": "full_numbers"
     });
-	
-  // Chosen Select
-        jQuery(".chosen-select").chosen({'width':'100%','white-space':'nowrap'});
+    
+
+  
   
   });
 </script>
-
 </body>
 </html>
