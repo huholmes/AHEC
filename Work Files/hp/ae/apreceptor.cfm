@@ -18,11 +18,15 @@
     <cfset This.ActiveFolder = 'hp'>
     <cfset This.ActiveSubFolder = 'hpTrainees'>
 <!--Database Calls-->
-
+<!--- new adding stuff --->
     <cfquery name="rCredentials" datasource="#datasource2#">
         SELECT * FROM Credentials ORDER BY ID ASC
     </cfquery>
     
+    <!--- select from the specialties --->
+    <cfquery name="rSpecialties" datasource="#datasource2#">
+        SELECT * FROM Specialties ORDER BY ID ASC
+    </cfquery>
 
 
 <cfquery name="rInstitutions" datasource="#datasource2#">
@@ -187,6 +191,15 @@ NULL
         VALUES (#This.ID#, #Credentials#)
         </cfquery> 
      </cfloop> 
+
+     <!--- Add Specialties   6/20/14 --->
+        <cfloop index="Specialties" list="#FORM.PreceptorsSpecialties#" delimiters=",">
+        <cfquery datasource="#datasource2#">   
+            INSERT INTO dbo.PreceptorsSpecialties (PreceptorsID,SpecialtiesID)
+        VALUES (#This.ID#, #Specialty#)
+        </cfquery> 
+     </cfloop> 
+
   
   <cfquery name="GetTraineeID" datasource="#datasource2#">
       SELECT max(ID) as TraineeID FROM dbo.Trainees
@@ -315,7 +328,7 @@ VALUES (#This.ID#
       </div>
 
 
-
+    <!--- Credentials --->
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">Preceptor's field of work</h4>
@@ -336,7 +349,38 @@ VALUES (#This.ID#
           </div>
           </div>
 
+<!--- Specialties --->
 
+                    <div class="form-group">
+            <div class="reqd" >      
+            <label class="col-sm-2 control-label">Specialty<span class="asterisk">*</span></label>
+            <div class="col-sm-10">
+              <select class="form-control chosen-select" multiple data-placeholder="Choose Preceptors's Specialty.." name="PreceptorsSpecialties" required>
+                <option value=""></option>
+                <cfoutput query="rSpecialties">
+                    <option value="#ID#">#Specialty#</option>
+                </cfoutput>
+              </select>
+              <label class="error" for="SitePartners"></label>
+            </div>
+          </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Sex <span class="asterisk">*</span></label>
+            <div class="col-sm-4">
+              <div class="rdio rdio-primary">
+                <input type="radio" name="sex" value="1" id="sexMale" >
+                <label for="sexMale">active</label>
+              </div>
+              <div class="rdio rdio-primary">
+                <input type="radio" name="sex" value="0" id="sexFemale">
+                <label for="sexFemale">Inactive</label>
+              </div>
+              <label class="error" for="sex"></label>
+            </div>
+          </div>
+          
 
           <div class="form-group">
             <label class="col-sm-2 control-label">BoardStatus</label>
@@ -350,18 +394,27 @@ VALUES (#This.ID#
               </select>
             </div>
           </div>
+
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">Emergency Contact</label>
+          <label class="col-sm-2 control-label">Anticipated Degree</label>
             <div class="col-sm-4">
-              <input type="text" placeholder="Emergency Contact" name="EmergContactName" class="form-control">
+              <select class="form-control" name="AnticDegree">
+                <option value=""></option>
+                  <cfoutput query="rDegrees">
+                    <option value="#DegreeAbv#">#DegreeTitle# (#DegreeAbv#)</option>
+                  </cfoutput>
+              </select>
             </div>
-            <label class="col-sm-2 control-label">Emergency Phone</label>
+            <label class="col-sm-2 control-label">Anticipated Completion</label>
             <div class="col-sm-4">
-              <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input type="text" placeholder="Emergency Phone" id="EmergContactPhone" Name="EmergContactPhone" class="form-control">
+              <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input type="text" placeholder="Anticipated Completion" id="AnticDate" class="form-control" name="AnticDate">
               </div>
             </div>
           </div>
+
+
         </div>
         <!-- panel-body --> 
       </div>
